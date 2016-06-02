@@ -1,0 +1,9 @@
+#offCanvasMenu {
+  width: 320px;
+  transform: translateX(-320px);
+  float: left;
+}
+
+#contentWrapper{
+  float: left;
+}

@@ -1,0 +1,14 @@
+<template name="results">
+  <h1>results page: men</h1>
+  <h2>Results refresh every minute</h2>
+  <table>
+    {{#each result}}
+    <tr>
+      <td>{{doc.team_1_name}}</td>
+      <td>{{doc.team_1_score}}</td>
+      <td>{{doc.team_2_score}}</td>
+      <td>{{doc.team_2_name}}</td>
+    </tr>
+    {{/each}}
+  </table>
+</template>
