@@ -10,7 +10,10 @@ function updateMen() {
     console.log(new Date())
     var self = this;
     var i = 0;
-    while(i<6){
+    var wholeAPICall = HTTP.get('https://api.leaguevine.com/v1/swiss_rounds/?tournament_id=19752');
+    var roundCount = wholeAPICall.data.meta.total_count;
+    console.log('roundCount');
+    while(i<roundCount){
       HTTP.get('https://api.leaguevine.com/v1/swiss_rounds/?tournament_id=19752&round_number='+i+'&access_token=6fe6daa931', function(error, response){
         _.each(response.data.objects[0].games, function(item) {
           if(item.team_2 === null){

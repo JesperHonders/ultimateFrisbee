@@ -1,6 +1,6 @@
 Template.results.helpers({
   result: function() {
-    return resultsMen.find({});
+    return resultsMen.find({}, {sort: {"meta.round_number": -1}});
   },
 });
 
