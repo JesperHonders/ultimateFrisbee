@@ -7,3 +7,30 @@
 #contentWrapper{
   float: left;
 }
+
+/* Navigation left */
+.sb-slidebar {
+	background: #232333;
+	color: #7bcfda;
+	padding: 1em 2em;
+}
+
+.sb-slidebar a, .sb-slidebar a:visited {
+	color: #7bcfda;
+	text-decoration: none;
+}
+
+.sb-slidebar li {
+	list-style: none;
+	line-height: 3;
+}
+
+.sb-slidebar i {
+	min-width: 16px;
+	padding: auto;
+}
+
+/* Toggle navigation */
+.sb-toggle-left {
+	font-size: 1.5em;
+}
