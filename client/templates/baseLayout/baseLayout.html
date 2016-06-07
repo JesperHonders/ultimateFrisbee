@@ -7,15 +7,11 @@
   <section class="sb-slidebar sb-left">
     <nav>
       <ul>
-        <li>
-          <a href="/results/19753"><i class="fa fa-trophy" aria-hidden="true"></i> Open</a>
-        </li>
-        <li>
-          <a href="/results/19753"><i class="fa fa-trophy" aria-hidden="true"></i> Mixed</a>
-        </li>
-        <li>
-          <a href="/results/19753"><i class="fa fa-trophy" aria-hidden="true"></i> Women</a>
-        </li>
+        {{#each tournament}}
+          <li>
+            <a class="fa fa-trophy" aria-hidden="true" href="/results/{{tournamentId}}">{{name}}</a>
+          </li>
+        {{/each}}
         <li>
           <a href="/results/19753"><i class="fa fa-map-marker" aria-hidden="true"></i> Field plan</a>
         </li>
