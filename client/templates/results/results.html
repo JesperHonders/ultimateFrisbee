@@ -1,12 +1,18 @@
 <template name="results">
   <p>Results refresh every 60 seconds</p>
-  <ul>
+  <ul class="results">
     {{#each result}}
       <li class="resultRow">
-        <span>{{doc.team_1_name}}</span>
-        <span>{{doc.team_1_score}}</span>
-        <span>{{doc.team_2_score}}</span>
-        <span>{{doc.team_2_name}}</span>
+        <section class="team team1">
+          <p>{{doc.team_1_name}}</p>
+          <img class="color2" src="/img/shirt.svg"/>
+          <span>{{doc.team_1_score}}</span>
+        </section>
+        <section class="team team2">
+          <span>{{doc.team_2_score}}</span>
+          <img class="color1" src="/img/shirt.svg"/>
+          <p>{{doc.team_2_name}}</p>
+        </section>
       </li>
       <li data-id="{{_id}}" class="hiddenRow">
         <span>{{doc.team_1_score}}</span> -

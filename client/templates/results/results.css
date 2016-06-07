@@ -1,3 +1,38 @@
 .hiddenRow {
   display: none;
 }
+
+ul.results {
+	list-style:none;
+}
+
+.team {
+	width: 40%;
+	padding: 1em 5%;
+	background: white;
+	border-bottom: 1px solid grey;
+	background: white;
+}
+
+.team p {
+	display: inline;
+}
+
+.team img {
+	width: 30px;
+}
+
+.team span {
+	display: inline;
+	font-size: 2em
+}
+
+.team1 {
+	text-align: right;
+	float: left;
+}
+
+.team2 {
+	text-align: left;
+	float: left;
+}
