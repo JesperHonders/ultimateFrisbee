@@ -1,14 +1,17 @@
 <template name="results">
-  <h1>results page: men</h1>
-  <h2>Results refresh every 10 seconds</h2>
-  <table>
+  <p>Results refresh every 60 seconds</p>
+  <ul>
     {{#each result}}
-    <tr>
-      <td>{{doc.team_1_name}}</td>
-      <td>{{doc.team_1_score}}</td>
-      <td>{{doc.team_2_score}}</td>
-      <td>{{doc.team_2_name}}</td>
-    </tr>
+      <li class="resultRow">
+        <span>{{doc.team_1_name}}</span>
+        <span>{{doc.team_1_score}}</span>
+        <span>{{doc.team_2_score}}</span>
+        <span>{{doc.team_2_name}}</span>
+      </li>
+      <li data-id="{{_id}}" class="hiddenRow">
+        <span>{{doc.team_1_score}}</span> -
+        <span>{{doc.team_2_score}}</span>
+      </li>
     {{/each}}
-  </table>
+  </ul>
 </template>

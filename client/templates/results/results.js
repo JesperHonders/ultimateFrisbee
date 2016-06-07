@@ -5,6 +5,13 @@ Template.results.helpers({
   },
 });
 
+
+Template.results.events({
+  'click .resultRow'(event) {
+    $('[data-id="'+this._id+'"]').slideToggle()
+  }
+})
+
 Template.results.rendered = function(){
   console.log(this.data)
 }
