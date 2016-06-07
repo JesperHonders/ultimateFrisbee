@@ -1,24 +1,23 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
-  updateMen();
+  updateResults();
 });
 
-function updateMen() {
-  var allTournaments = tournaments.find({}).fetch();
-  // Meteor.setInterval(function(){
+function updateResults() {
+  Meteor.setInterval(function(){
+    var allTournaments = tournaments.find({}).fetch();
     _.each(allTournaments, function(tournament){
-      console.log(tournament.name)
+      console.log('running'+ tournament.name)
       var self = this;
-      var i = 0;
-      console.log(tournament.tournamentId)
+      var i = 1;
       HTTP.get('https://api.leaguevine.com/v1/swiss_rounds/?tournament_id='+tournament.tournamentId+'&access_token=eb05d96dbe', function(error, response){
-        var roundCount = response.data.meta.round_count;
+        var roundCount = response.data.meta.total_count;
         console.log(roundCount);
-        while(i<roundCount){
+        while(i<=roundCount){
           console.log(i)
           HTTP.get('https://api.leaguevine.com/v1/swiss_rounds/?tournament_id='+tournament.tournamentId+'&round_number='+i+'&access_token=6fe6daa931', function(error, response){
-            if(response.data.objects[0].games === null){
+            if(response.data === null){
               console.log("Error in database!")
             }
             _.each(response.data.objects[0].games, function(item) {
@@ -43,16 +42,16 @@ function updateMen() {
                 winner: item.winner,
                 field: item.game_site.name
               }
-              var exists = resultsMen.findOne({"meta.gameID": item.id})
+              var exists = results.findOne({"meta.gameID": item.id})
               if (exists){
                 console.log("Document updated")
-                resultsMen.update(
+                results.update(
                   {"meta.gameID": item.id},
                   {doc: doc, meta: meta}
                 )
               } else {
                 console.log("Document inserted")
-                resultsMen.insert({doc, meta})
+                results.insert({doc, meta})
               }
           });
           });
@@ -61,5 +60,5 @@ function updateMen() {
       })
       });
 
-  // }, 10000)
+  }, 60000)
 }

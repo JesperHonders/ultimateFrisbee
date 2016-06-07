@@ -2,12 +2,11 @@
   <div class="sb-slidebar sb-left">
     <nav>
       <ul>
-        <li>
-          <a href="/results/19753">Uitslagen</a>
-        </li>
-        <li>
-          Test 2
-        </li>
+        {{#each tournament}}
+          <li>
+            <a href="/results/{{tournamentId}}">{{name}}</a>
+          </li>
+        {{/each}}
       </ul>
     </nav>
   </div>
