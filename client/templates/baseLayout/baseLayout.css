@@ -1,3 +1,24 @@
+/* RESET */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+}
+
 #offCanvasMenu {
   width: 320px;
   transform: translateX(-320px);
@@ -33,4 +54,38 @@
 /* Toggle navigation */
 .sb-toggle-left {
 	font-size: 1.5em;
+	position: absolute;
+	top: 1em;
+	left: 1em;
+}
+
+/* Header */
+header {
+	background: #2caae1;
+	color: white;
+	padding: 1.5em 0 0 0;
+	text-align: center;
+}
+
+header h1 {
+	margin-bottom: 1em;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+header a {
+	color: white;
+	padding-bottom: .5em;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.sub-nav a {
+	display: inline-block;
+	width: 32%;
+}
+
+.sub-nav a.active {
+	color: #FAD03B;
+	border-bottom: solid 7px #FAD03B;
 }
