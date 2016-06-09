@@ -6,33 +6,33 @@ ul.results {
 	list-style:none;
 }
 
+.resultRow section {
+	border-bottom: 1px solid #F0F0F0;
+	padding: 1.5em;
+	text-align: center;
+}
+
+.resultRow section p {
+	display: inline-block;
+}
+
 .team {
-	width: 40%;
-	padding: 1em 5%;
-	background: white;
-	border-bottom: 1px solid grey;
-	background: white;
+	width: 35%;
+	font-size: .8em;
+	overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.team p {
-	display: inline;
-}
-
-.team img {
-	width: 30px;
-}
-
-.team span {
-	display: inline;
-	font-size: 2em
+.score {
+	width: 60px;
+	font-size: 1.2em;
 }
 
 .team1 {
 	text-align: right;
-	float: left;
 }
 
 .team2 {
 	text-align: left;
-	float: left;
 }
