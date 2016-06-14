@@ -2,14 +2,14 @@
 	text-align: center;
 }
 
-.at-title h3 {
+.at-form h3 {
 	font-size: 1.5em;
 	font-weight: bold;
 	margin-bottom: 1em;
 	margin-top: 2em;
 }
 
-.at-pwd-form input {
+.at-form input {
 	font-size: 1em;
 	padding: .5em;
 	margin-bottom: .5em;
@@ -17,11 +17,11 @@
 	background: #fff;
 }
 
-.at-pwd-form label {
+.at-form label {
 	display: none;
 }
 
-.at-pwd-form button {
+.at-form button {
 	background: #ea5906;
 	color: #fff;
 	margin-top: .5em;
@@ -32,11 +32,11 @@
 	border: none;
 }
 
-.at-signup-link {
+.at-signup-link, .at-signin-link {
 	margin-top: 3em;
 	color: #777;
 }
 
-.at-signup-link a {
+.at-signup-link a, .at-signin-link a {
 	color: #2caae1;
 }

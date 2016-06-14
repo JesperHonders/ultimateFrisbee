@@ -1,0 +1,10 @@
+<template name="account">
+	{{> atForm}}
+
+	<div class="at-form">
+		{{#if currentUser}}
+			<h3>Are you sure you want to log out?</h3>
+			<button class="logout">Log-out</button>
+		{{/if}}
+	</div>
+</template>

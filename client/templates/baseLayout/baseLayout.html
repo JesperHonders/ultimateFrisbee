@@ -17,9 +17,15 @@
         <li>
           <a href="/fieldplan"><i class="fa fa-map-marker" aria-hidden="true"></i> Field plan</a>
         </li>
-        <li>
-          <a href="/login"><i class="fa fa-user" aria-hidden="true"></i> Log-in</a>
-        </li>
+        {{#if currentUser}}
+          <li>
+            <a href="/account"><i class="fa fa-user" aria-hidden="true"></i> Log-out</a>
+          </li>
+        {{else}}
+          <li>
+            <a href="/account"><i class="fa fa-user" aria-hidden="true"></i> Log-in</a>
+          </li>
+        {{/if}}
       </ul>
     </nav>
   </section>
