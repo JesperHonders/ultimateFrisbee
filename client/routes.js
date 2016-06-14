@@ -16,4 +16,5 @@ Router.map(function(){
       return this.params.id
     }
   })
+  this.route('fieldplan',{path: 'fieldplan'})
 })
