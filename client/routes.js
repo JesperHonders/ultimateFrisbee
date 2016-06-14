@@ -9,5 +9,11 @@ Router.map(function(){
     data: function(){
       return this.params.id
     }
+  }),
+  this.route('game',{
+    path: '/game/:id',
+    data: function(){
+      return this.params.id
+    }
   })
 })
