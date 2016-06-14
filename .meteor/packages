@@ -24,3 +24,6 @@ msavin:mongol
 http
 meteorhacks:kadira
 insecure
+accounts-base
+accounts-password
+useraccounts:unstyled

@@ -17,4 +17,5 @@ Router.map(function(){
     }
   })
   this.route('fieldplan',{path: 'fieldplan'})
+  this.route('login', {path: 'login'})
 })
