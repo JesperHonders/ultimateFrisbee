@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 
 Meteor.startup(() => {
-  updateResults();
+  // updateResults();
 });
 
 function updateResults() {
@@ -60,5 +60,5 @@ function updateResults() {
         }
       })
     });
-  }, 60000)
+  }, 1200000)
 }

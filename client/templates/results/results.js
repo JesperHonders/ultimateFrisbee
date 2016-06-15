@@ -1,7 +1,20 @@
 Template.results.helpers({
-  result: function() {
+  results: function() {
     var pageId= parseInt(this);
-    return results.find({"meta.tournamentID": pageId});
+    var games = results.find({"meta.tournamentID": pageId}).fetch();
+    var rounds = _.uniq(_.map(games, function(game){
+      return game.meta.round_number
+    }));
+    var gamesByRound = _.map(rounds, function(round){
+      var roundGames = games.filter(function(game){
+        return game.meta.round_number === round
+      })
+      return {roundNumber: roundGames[0].meta.round_number, games: roundGames}
+    })
+
+    return _.sortBy(gamesByRound, function(round){
+      return round.roundNumber;
+    }).reverse();
   },
 });
 
