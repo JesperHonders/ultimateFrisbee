@@ -1,12 +1,60 @@
+/* Round block */
+.results {
+	background: #F0F0F0;
+}
+
+.round-block {
+	margin-bottom: 1em;
+	background: #fff;
+}
+
+/* Time */
+.resultRow {
+	position: relative;
+}
+
+/*.time {
+	position: absolute;
+	left: 1em;
+	top: 1em;
+	background: #F0F0F0;
+	border-radius: 50%;
+	font-size: .8em;
+	padding: .5em;
+	color: grey;
+	margin-left: 10px;
+}*/
+
+/* Field */
+.field {
+	position:absolute;
+	top: 50%;
+	left: 1em;
+	-ms-transform: translate(0, -50%);
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	text-align: center;
+	background: #F0F0F0;
+	border-radius: 4px;
+	padding: .2em;
+	color: grey;
+	font-size: .8em;
+}
+
+/* Result list */
 ul.results {
 	list-style:none;
 }
 
 .resultRow section {
 	border-bottom: 1px solid #F0F0F0;
-	padding: 1.5em;
+	padding: 1.5em .5em;
 	text-align: center;
 	overflow-y: scroll;
+}
+
+.resultRow section .resultRowShow {
+	padding-left: 3em;
 }
 
 .resultRow section p {
@@ -14,7 +62,7 @@ ul.results {
 }
 
 .team {
-	width: 35%;
+	width: 30%;
 	font-size: .8em;
 	overflow: hidden;
     text-overflow: ellipsis;
@@ -32,6 +80,18 @@ ul.results {
 
 .team2 {
 	text-align: left;
+}
+
+/* Round number */
+.round-heading {
+	width: 100%;
+	border-bottom: 1px solid #F0F0F0;
+	padding: 1em;
+}
+
+.round-heading h2 {
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
 /* Hidden row */
@@ -66,4 +126,8 @@ ul.results {
 
 .resultRow section .hidden-team p {
 	display: block;
+}
+
+li.show .resultRowShow, li.show .field {
+	display: none;
 }

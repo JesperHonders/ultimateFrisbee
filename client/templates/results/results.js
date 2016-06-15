@@ -22,7 +22,7 @@ Template.results.helpers({
 Template.results.events({
   'click .resultRowShow'(event) {
     $('[data-id="'+this._id+'"]').slideToggle()
-      // $('[data-id="'+this._id+'"]').addClass("show");  
+    $('[data-id="'+this._id+'"]').closest("li").toggleClass("show");  
   },
 
   'click .team-1-score-plus' (event) {

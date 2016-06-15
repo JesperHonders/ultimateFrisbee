@@ -4,11 +4,16 @@
       <div class="round-block">
 
         <section class="round-heading">
-          <h2>{{roundNumber}}</h2>
+          <h2>Round {{roundNumber}}</h2>
         </section>
         
         {{#each games}}
           <li class="resultRow">
+
+            <!-- <div class="time">16</div> -->
+
+            <div class="field">{{meta.field}}</div>
+
             <section>
               <div class="resultRowShow">
                 <p class="team team1">{{doc.team_1_name}}</p>
