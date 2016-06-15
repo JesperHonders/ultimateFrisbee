@@ -7,8 +7,9 @@ Template.results.helpers({
 
 
 Template.results.events({
-  'click .resultRow'(event) {
+  'click .resultRowShow'(event) {
     $('[data-id="'+this._id+'"]').slideToggle()
+      // $('[data-id="'+this._id+'"]').addClass("show");  
   },
 
   'click .team-1-score-plus' (event) {

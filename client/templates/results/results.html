@@ -5,17 +5,30 @@
       <li class="resultRow">
 
         <section>
-          <p class="team team1">{{doc.team_1_name}}</p>
-          <p class="score">{{doc.team_1_score}} - {{doc.team_2_score}}</p>
-          <p class="team team2">{{doc.team_2_name}}</p>
+          <div class="resultRowShow">
+            <p class="team team1">{{doc.team_1_name}}</p>
+            <p class="score"><i class="icon-tshirt"></i> {{doc.team_1_score}} - {{doc.team_2_score}} <i class="icon-tshirt"></i></p>
+            <p class="team team2">{{doc.team_2_name}}</p>
+          </div>
+
+          <div data-id="{{_id}}" class="hiddenRow">
+            <div class="hidden-team">
+              <i class="icon-tshirt"></i>
+              <h2>{{doc.team_1_name}}</h2>
+              <p><button class="btn btn-secondary team-1-score-min">-</button> <span>{{doc.team_1_score}}</span> <button class="btn team-1-score-plus">+</button></p>
+            </div>
+            <div class="hidden-team">
+              <i class="icon-tshirt"></i>
+              <h2>{{doc.team_2_name}}</h2>
+              <p><button class="btn btn-secondary team-2-score-min">-</button> <span>{{doc.team_2_score}}</span> <button class="btn team-2-score-plus">+</button></p>
+            </div>
+            <!-- <button class="team-1-score-plus">Team {{doc.team_1_name}} +1</button>
+            <button class="team-1-score-min">Team {{doc.team_1_name}} -1</button>
+            <button class="team-2-score-plus">Team {{doc.team_2_name}} +1</button>
+            <button class="team-2-score-min">Team {{doc.team_2_name}} -1</button> -->
+            <!-- <a href="/game/{{meta.gameID}}">Detail page</a> -->
+          </div>
         </section>
-      </li>
-      <li data-id="{{_id}}" class="hiddenRow">
-        <button class="team-1-score-plus">Team {{doc.team_1_name}} +1</button>
-        <button class="team-1-score-min">Team {{doc.team_1_name}} -1</button>
-        <button class="team-2-score-plus">Team {{doc.team_2_name}} +1</button>
-        <button class="team-2-score-min">Team {{doc.team_2_name}} -1</button>
-        <a href="/game/{{meta.gameID}}">Detail page</a>
       </li>
     {{/each}}
   </ul>
