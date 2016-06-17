@@ -10,30 +10,71 @@
         {{#each games}}
           <li class="resultRow">
 
-            <!-- <div class="time">16</div> -->
-
-            <div class="field">{{meta.field}}</div>
-
-            <section>
               <div class="resultRowShow">
-                <p class="team team1">{{doc.team_1_name}}</p>
-                <p class="score"><i class="icon-tshirt"></i> {{doc.team_1_score}} - {{doc.team_2_score}} <i class="icon-tshirt"></i></p>
-                <p class="team team2">{{doc.team_2_name}}</p>
+                <table>
+                  <tbody>
+                      <tr>
+
+                        <td class="team-name col-md-4 col-sm-4 col-xs-4 text-right">
+                            {{doc.team_1_name}}
+                        </td>
+
+                        <td class="col-md-1 col-sm-1 col-xs-1 text-center">
+                            <i class="icon-tshirt"></i>
+                        </td>
+
+                        <td class="col-md-2 col-sm-2 col-xs-2 text-center">
+                            <p class="field">{{meta.field}}</p><br>
+                            <p class="score-time">{{doc.team_1_score}} - {{doc.team_2_score}}</p>
+                        </td>
+
+                        <td class="col-md-1 col-sm-1 col-xs-1 text-center">
+                            <i class="icon-tshirt"></i>
+                        </td>
+
+                        <td class="team-name col-md-4 col-sm-4 col-xs-4 text-left">
+                            {{doc.team_2_name}}
+                        </td>
+
+                      </tr>
+                  </tbody>
+                </table>
               </div>
 
               <div data-id="{{_id}}" class="hiddenRow">
-                <div class="hidden-team">
-                  <i class="icon-tshirt"></i>
-                  <h2>{{doc.team_1_name}}</h2>
-                  <p><button class="btn btn-secondary team-1-score-min">-</button> <span>{{doc.team_1_score}}</span> <button class="btn team-1-score-plus">+</button></p>
-                </div>
-                <div class="hidden-team">
-                  <i class="icon-tshirt"></i>
-                  <h2>{{doc.team_2_name}}</h2>
-                  <p><button class="btn btn-secondary team-2-score-min">-</button> <span>{{doc.team_2_score}}</span> <button class="btn team-2-score-plus">+</button></p>
+                <div class="meta-data-row">
+
+                  <i class="close-hidden-row fa fa-times" aria-hidden="true"></i>
+
+                  <div class="col-md-12 col-xs-12 text-center">
+                      <p class="hidden-field">{{meta.field}}</p><br>
+                      <p class="hidden-time">16:00</p>
+                  </div>
+
+                  <div class="col-md-6 col-xs-6 text-center">
+                      <i class="icon-tshirt"></i>
+                      <h2>{{doc.team_1_name}}</h2>
+                  </div>
+
+                  <div class="col-md-6 col-xs-6 text-center">
+                      <i class="icon-tshirt"></i>
+                      <h2>{{doc.team_2_name}}</h2>
+                  </div>
+
+                  <div class="col-md-12 col-xs-12">
+                      <div class="col-md-6 col-xs-6 text-center">
+                          <p><button class="button btn-secondary team-1-score-min">-</button> <span>{{doc.team_1_score}}</span> <button class="button team-1-score-plus">+</button></p>
+                      </div>
+
+                      <div class="col-md-6 col-xs-6 text-center">
+                          <p><button class="button btn-secondary team-2-score-min">-</button> <span>{{doc.team_2_score}}</span> <button class="button team-2-score-plus">+</button></p>
+                      </div>
+                  </div>
+
+                  
+
                 </div>
               </div>
-            </section>
           </li>
         {{/each}}
 

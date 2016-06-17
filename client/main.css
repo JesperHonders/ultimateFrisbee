@@ -10,7 +10,7 @@ body {
 	padding: 0 5%;
 }
 
-.btn {
+.button {
 	background: #ea5906;
 	color: #fff;
 	margin-top: .5em;
@@ -27,7 +27,7 @@ body {
 	background: #fff;
 }
 
-/* FONTS */
+/* ICON FONT SHIRT */
 @charset "UTF-8";
 
 @font-face {
@@ -71,3 +71,4 @@ body {
 .icon-tshirt:before {
   content: "\61";
 }
+
