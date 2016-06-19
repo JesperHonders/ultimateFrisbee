@@ -16,14 +16,16 @@ Template.results.helpers({
       return round.roundNumber;
     }).reverse();
   },
+  templateGestures: {
+    'press .resultRowShow': function (event, templateInstance) {
+      $('[data-id="'+this._id+'"]').slideToggle();
+      $('[data-id="'+this._id+'"]').closest("li").toggleClass("show");
+    }
+  }
 });
 
 
 Template.results.events({
-  'click .resultRowShow'(event) {
-    $('[data-id="'+this._id+'"]').slideToggle();
-    $('[data-id="'+this._id+'"]').closest("li").toggleClass("show");  
-  },
   'click .close-hidden-row'(event) {
     $('[data-id="'+this._id+'"]').closest("li").toggleClass("show");
     $('[data-id="'+this._id+'"]').slideToggle();

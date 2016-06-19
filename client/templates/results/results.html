@@ -6,10 +6,10 @@
         <section class="round-heading">
           <h2>Round {{roundNumber}}</h2>
         </section>
-        
+
         {{#each games}}
           <li class="resultRow">
-
+            {{#HammerTouchArea gestureMap=templateGestures}}
               <div class="resultRowShow">
                 <table>
                   <tbody>
@@ -40,6 +40,7 @@
                   </tbody>
                 </table>
               </div>
+            {{/HammerTouchArea}}
 
               <div data-id="{{_id}}" class="hiddenRow">
                 <div class="meta-data-row">
@@ -71,7 +72,7 @@
                       </div>
                   </div>
 
-                  
+
 
                 </div>
               </div>
