@@ -8,7 +8,7 @@ Meteor.startup(() => {
 // Function that polls the server and writes back the response in a server-side mongo Collection for futher use
 function updateResults() {
   // wrapping the code in an interval
-  // Meteor.setInterval(function(){
+  Meteor.setInterval(function(){
     // Fetching all the tournaments that the code has to itterate over.
     var allTournaments = tournaments.find({}).fetch();
     // Running the code for each tournament
@@ -81,5 +81,5 @@ function updateResults() {
         }
       })
     });
-  // }, 600000) // ammount of mili seconds the function runs again
+  }, 600000) // ammount of mili seconds the function runs again
 }
