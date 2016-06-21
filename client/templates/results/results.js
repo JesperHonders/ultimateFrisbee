@@ -1,7 +1,27 @@
 Template.results.helpers({
   results: function() {
-    var pageId= parseInt(this);
-    var games = results.find({"meta.tournamentID": pageId}).fetch();
+    var pageId= parseInt(this.id);
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = ('0' + (today.getMonth()+1)).slice(-2) // January = +1 .slice(-2) checks if there are 2 numbers if not add a 0
+    var yyyy = today.getFullYear();
+    var hour = today.getHours();
+    var minute = today.getMinutes();
+    if (this.mode === "finished") {
+      $(".mode-toggler").each(function(){
+        $(this).removeClass("active");
+      })
+      $("#finished").addClass("active");
+      var games = results.find({"meta.tournamentID": pageId, "meta.winner": {$ne:null}}).fetch();
+    } else if (this.mode === "live") {
+      var games = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "meta.winner": null, "time.startHour": {$gte: hour, $lte: hour+1}}).fetch();
+    } else if (this.mode === "upcomming") {
+      $(".mode-toggler").each(function(){
+        $(this).removeClass("active");
+      })
+      $("#upcomming").addClass("active");
+      var games = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "time.startHour": {$gte: hour}, "doc.team_1_score": 0, "doc.team_2_score": 0 }).fetch()
+    }
     var rounds = _.uniq(_.map(games, function(game){
       return game.meta.round_number
     }));
@@ -26,6 +46,12 @@ Template.results.helpers({
 
 
 Template.results.events({
+  'click .mode-toggler' (event) {
+    $(".mode-toggler").each(function(){
+      $(this).removeClass("active");
+    })
+    $(event.toElement).addClass("active");
+  },
   'click .close-hidden-row'(event) {
     $('[data-id="'+this._id+'"]').closest("li").toggleClass("show");
     $('[data-id="'+this._id+'"]').slideToggle();
@@ -91,7 +117,3 @@ Template.results.events({
     });
   }
 })
-
-Template.results.rendered = function(){
-  console.log(this.data)
-}

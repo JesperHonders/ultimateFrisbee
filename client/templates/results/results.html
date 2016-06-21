@@ -1,4 +1,11 @@
 <template name="results">
+<header>
+  <section class="sub-nav">
+    <a id="finished" class="mode-toggler" href="/results/{{this.id}}/finished">Finished</a>
+    <a id="live" class="mode-toggler active" href="/results/{{this.id}}/live">Live</a>
+    <a id="upcomming" class="mode-toggler" href="/results/{{this.id}}/upcomming">Upcoming</a>
+  </section>
+</header>
   <ul class="results">
     {{#each results}}
       <div class="round-block">
@@ -41,7 +48,7 @@
                 </table>
               </div>
             {{/HammerTouchArea}}
-
+            {{#if currentUser}}
               <div data-id="{{_id}}" class="hiddenRow">
                 <div class="meta-data-row">
 
@@ -71,11 +78,9 @@
                           <p><button class="button btn-secondary team-2-score-min">-</button> <span>{{doc.team_2_score}}</span> <button class="button team-2-score-plus">+</button></p>
                       </div>
                   </div>
-
-
-
                 </div>
               </div>
+            {{/if}}
           </li>
         {{/each}}
 
