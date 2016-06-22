@@ -78,14 +78,12 @@ header a {
 }
 
 .sub-nav a {
-	display: inline-block;
-	width: 32%;
 	padding-bottom: .5em;
 	text-decoration: none;
 }
 
 .sub-nav a.active {
 	color: #FAD03B;
-	border-bottom: solid 7px #FAD03B;
+	border-bottom: solid 5px #FAD03B;
 	font-weight: bold;
 }
