@@ -37,7 +37,7 @@ Template.results.helpers({
     }).reverse();
   },
   templateGestures: {
-    'press .resultRowShow': function (event, templateInstance) {
+    'swipeleft .resultRowShow': function (event, templateInstance) {
       $('[data-id="'+this._id+'"]').slideToggle();
       $('[data-id="'+this._id+'"]').closest("li").toggleClass("show");
     }
