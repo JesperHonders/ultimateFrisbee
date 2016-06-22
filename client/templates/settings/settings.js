@@ -14,6 +14,7 @@ Template.settings.events({
     console.log(id);
     Meteor.call('addTournament', id, name )
     noty({text: 'Succesfully added tournament', type: 'success'})
+    return false
   },
   'click .deleteButton' (event) {
     var id = this._id;
