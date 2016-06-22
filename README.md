@@ -1,19 +1,21 @@
 # UltimateFrisbee Windmill Application
 
 ## Use Cases
-1. a app where people of windmill can easily keep scores
-2. With the app i can see wich scores of what game are present and where the games are held.
+1. An app where people of Windmill can easily keep scores.
+2. With the app I can see the scores of every game and see on what field the games are being played.
 
 ## Workflow
 
 We worked in on this application as a duo, Jesper (Lead programming) Bart (Lead Design/Css). Notice the lead there? 
-Thats because we worked together on both of those things, only jesper had the final say about programming and bart about design. 
+Thats because we worked together on both of those things, only Jesper had the final say about programming and Bart about design. 
 
 Every day we had contact over skype and talked about the changes we made and tought were necessary, these changes were described on our Trello, and assigned to each member.
 
 ## Week 1
 
-The first week we studied the API and tested what we could get out of it, Also we brainstormed and tought about the app how its going to work. 
+The first week we studied the API and tested what we could get out of it, Also we brainstormed and tought about the app how its going to work. We sketched alot of ideas out on paper. Sketches and drawings helped to form the basics of our idea.
+
+On Friday we presented these skethces to the client.
 
 See our process book for drawings and sketches.
 
@@ -108,6 +110,8 @@ The HTML we used to display the data is shown below
 </template>
 ```
 
+We also went futher on our concept based on the feedback we got from the client in Week 1. After some iterations on the concept we've created a paper prototype using Invision. This was to be the sketal of our app.
+
 ##Week 3
 
 In week 2 we tried to enhance the server polling, we did that in several ways.
@@ -167,6 +171,8 @@ the app would be useless.
 And we didn't knew how much rounds there were inside 
 
 Then we decided to use filters to just get what we need from the api, this drasticly improved polling time. We filtered the api request for the round numbers on forced bytes, this made the api request almost instant.
+
+We were continiously changing how the app should work and iterate troughout the entire first 4 weeks. Based on some talks we've had with players we decided to get rid of the seperate detail page and instead build in a detail page in the results list itself. So the detail page and list would be in one page. This was the biggest change this week.
 
 ## Week 4
 
