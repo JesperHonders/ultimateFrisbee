@@ -1,0 +1,25 @@
+table.active-tournaments {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.active-tournaments td {
+	padding: 1em 0;
+}
+
+.active-tournaments td p{
+	font-size: 1.1em;
+}
+
+
+.active-tournaments tr {
+	border-bottom: 1px solid #F0F0F0;
+}
+
+.active-tournaments tr:last-child {
+	border-bottom: none;
+}
+
+.active-delete {
+	min-width: 66px;
+}

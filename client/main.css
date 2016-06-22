@@ -5,6 +5,29 @@ body {
 	color: #333332;
 }
 
+h3 {
+  font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 1em;
+    margin-top: 2em;
+    padding: 0 5%;
+}
+
+form input {
+  font-size: 1em;
+  padding: .5em;
+  margin-bottom: .5em;
+  width: 60%;
+  background: #fff;
+  border: 1px solid #F0F0F0;
+}
+
+form input:focus {
+  border: 1px solid #2CAAE1;
+  box-shadow: none;
+  outline: none;
+}
+
 .container {
 	width: 90%;
 	padding: 0 5%;
@@ -35,6 +58,10 @@ body {
   padding: .8em 1em;
   margin: 2em 0 0 0;
   display: inline-block;
+}
+
+button, .button:focus, .btn-secondary:focus, .btn-tertiary:focus {
+  outline: none;
 }
 
 /* ICON FONT WINDMILL */

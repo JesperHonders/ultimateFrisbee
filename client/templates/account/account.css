@@ -15,6 +15,13 @@
 	margin-bottom: .5em;
 	width: 60%;
 	background: #fff;
+	border: 1px solid #F0F0F0;
+}
+
+.at-form input:focus {
+	border: 1px solid #2CAAE1;
+	box-shadow: none;
+	outline: none;
 }
 
 .at-form label {

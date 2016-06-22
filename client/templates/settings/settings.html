@@ -1,19 +1,35 @@
 <template name="settings">
   {{#if currentUser}}
-    <form>
-      <input id="formTournamentId" type="number" placeholder="tournamentID"/>
-      <input id="formTournamentName" type="text" placeholder="Tournament name"/>
-      <input id="formSubmit" type="submit" value="submit"/>
-    </form>
-    {{#each tournaments}}
-    <p>
-      <span>
-        {{name}}
-      </span>
-      <button class="deleteButton">Delete</button>
-    </p>
-    {{/each}}
+    <div class="row">
+      <div class="col-md-12 col-xs-12 text-center">
+        <h3>Add a new tournament</h3>
+
+        <form>
+          <div class="at-input">
+            <input id="formTournamentId" type="number" placeholder="tournamentID"/>
+          </div>
+          <div class="at-input">
+            <input id="formTournamentName" type="text" placeholder="Tournament name"/>
+          </div>
+            <button id="formSubmit" class="button">Submit</button>
+        </form>
+
+        <h3>Active tournaments</h3>
+
+        <table class="active-tournaments"> 
+          <tbody> 
+            {{#each tournaments}}
+              <tr>
+                <td><p>{{name}}</p></td> 
+                <th class="active-delete"><a href="" class="deleteButton"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></th> 
+              </tr>
+            {{/each}} 
+          </tbody> 
+        </table>
+  
+      </div>
+    </div>
     {{else}}
-    <h1>Please log in to use this function</h1>
+        <h1>Please log in to use this function</h1>
   {{/if}}
 </template>
