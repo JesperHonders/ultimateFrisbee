@@ -27,6 +27,16 @@ body {
 	background: #fff;
 }
 
+.btn-tertiary {
+  border: none;
+  background: #2CAAE1;
+  color: #fff;
+  font-size: .8em;
+  padding: .8em 1em;
+  margin: 2em 0 0 0;
+  display: inline-block;
+}
+
 /* ICON FONT WINDMILL */
 @charset "UTF-8";
 
