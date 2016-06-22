@@ -22,8 +22,8 @@ iron:router
 waitingkuo:slidebars
 msavin:mongol
 http
-insecure
 accounts-base
 accounts-password
 useraccounts:unstyled
 chriswessels:hammer
+jeremy:noty

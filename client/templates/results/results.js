@@ -59,6 +59,7 @@ Template.results.events({
   'click .submit-score'(event) {
     var gameID = this.meta.gameID;
     Meteor.call("finalizeScore", gameID)
+    noty({text: 'Succesfully send score to leaguevine'})
   },
 
   'click .team-1-score-plus' (event) {
