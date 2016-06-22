@@ -1,6 +1,23 @@
 # UltimateFrisbee Windmill Application
 
+## Use Cases
+1. a app where people of windmill can easily keep scores
+2. With the app i can see wich scores of what game are present and where the games are held.
+
+## Workflow
+
+We worked in on this application as a duo, Jesper (Lead programming) Bart (Lead Design/Css). Notice the lead there? 
+Thats because we worked together on both of those things, only jesper had the final say about programming and bart about design. 
+
+Every day we had contact over skype and talked about the changes we made and tought were necessary, these changes were described on our Trello, and assigned to each member.
+
 ## Week 1
+
+The first week we studied the API and tested what we could get out of it, Also we brainstormed and tought about the app how its going to work. 
+
+See our process book for drawings and sketches.
+
+## Week 2
 
 In the first week of the project we tried to poll data directly of the Leaguevine API, this approach had several problems.
 
@@ -91,12 +108,12 @@ The HTML we used to display the data is shown below
 </template>
 ```
 
-##Week 2
+##Week 3
 
 In week 2 we tried to enhance the server polling, we did that in several ways.
 
 
-1. we made the api request non blocking. This allowed us to poll to the server more often. We changed the intevall from 60 Seconds to 10.
+we made the api request non blocking. This allowed us to poll to the server more often. We changed the intevall from 60 Seconds to 10.
 ```javascript
 Meteor.setInterval(function(){
     console.log(new Date())
@@ -144,4 +161,38 @@ Meteor.setInterval(function(){
   }, 10000)
 ```
 Still we had a problem with making the data realtime, as this would just poll the server every 10 seconds, and the majority of the requests
-failed by time out. Basicly we were bombing the api with continious large requests.
+failed by time out. Basicly we were bombing the api with continious large requests. We had to solve this problem quick otherwise
+the app would be useless.
+
+And we didn't knew how much rounds there were inside 
+
+Then we decided to use filters to just get what we need from the api, this drasticly improved polling time. We filtered the api request for the round numbers on forced bytes, this made the api request almost instant.
+
+## Week 4
+
+Displayed the rounds according to round numbers. This was a pain in the ass to do. as seen by the code below we heavily used underscore to archieve this.
+This ammount of data manipulation makes the app a little bit slower.
+
+```javascript
+var games = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: hour}, "doc.team_1_score": 0, "doc.team_2_score": 0 }, {sort: {"meta.field": 1}}).fetch()
+    }
+    var rounds = _.uniq(_.map(games, function(game){
+      return game.meta.round_number
+    }));
+    var gamesByRound = _.map(rounds, function(round){
+      var roundGames = games.filter(function(game){
+        return game.meta.round_number === round
+      })
+      return {roundNumber: roundGames[0].meta.round_number, games: roundGames}
+    })
+
+    return _.sortBy(gamesByRound, function(round){
+      return round.roundNumber;
+    }).reverse();
+    ```
+    
+    in this week we also fixed the scorekeeping functionality, 
+
+
+
+
