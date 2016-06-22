@@ -33,8 +33,19 @@ time, mark, audio, video {
 .sb-slidebar {
 	background: #232333;
 	color: #7bcfda;
-	padding: 1em 2em;
 	z-index: 999;
+}
+
+.sb-slidebar nav ul {
+	padding-top: 1em;
+}
+
+.sb-slidebar nav ul li {
+	padding: 0 1em;
+}
+
+.sb-slidebar nav ul li.active {
+	background: rgba(255,255,255,.1);
 }
 
 .sb-slidebar a, .sb-slidebar a:visited {
