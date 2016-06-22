@@ -202,11 +202,11 @@ var games = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: h
  +        console.log( response );
  +      }
  +    });
-    ```
+```
     
-    also we changed the way how we display data: 
+also we changed the way how we display data: 
     
-    ```html
+```html
     <template name="results">
   <ul class="results">
     {{#each results}}
