@@ -11,12 +11,17 @@
       <ul>
         {{#each tournament}}
           <li>
-            <a href="/results/{{tournamentId}}/live"><i class="fa fa-trophy" aria-hidden="true"></i> {{name}}</a>
+            <a href="/results/{{tournamentID}}/live"><i class="fa fa-trophy" aria-hidden="true"></i> {{name}}</a>
           </li>
         {{/each}}
         <li>
           <a href="/fieldplan"><i class="fa fa-map-marker" aria-hidden="true"></i> Field plan</a>
         </li>
+        {{#if currentUser}}
+        <li>
+          <a href="/settings"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
+        </li>
+        {{/if}}
         {{#if currentUser}}
           <li>
             <a href="/account"><i class="fa fa-user" aria-hidden="true"></i> Log-out</a>

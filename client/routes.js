@@ -16,6 +16,7 @@ Router.map(function(){
       return this.params.id
     }
   })
+  this.route('settings', {path: 'settings'})
   this.route('fieldplan',{path: 'fieldplan'})
   this.route('account', {path: 'account'})
 })

@@ -1,0 +1,19 @@
+<template name="settings">
+  {{#if currentUser}}
+    <form>
+      <input id="formTournamentId" type="number" placeholder="tournamentID"/>
+      <input id="formTournamentName" type="text" placeholder="Tournament name"/>
+      <input id="formSubmit" type="submit" value="submit"/>
+    </form>
+    {{#each tournaments}}
+    <p>
+      <span>
+        {{name}}
+      </span>
+      <button class="deleteButton">Delete</button>
+    </p>
+    {{/each}}
+    {{else}}
+    <h1>Please log in to use this function</h1>
+  {{/if}}
+</template>
