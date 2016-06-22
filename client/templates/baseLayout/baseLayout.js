@@ -4,6 +4,13 @@ Template.baseLayout.helpers({
   },
 });
 
+Template.baseLayout.events({
+  'click a' (event){
+    $("#sb-site").css("transform", "translate(0px)");
+    $(".sb-slidebar").removeClass("sb-active");
+  }
+})
+
 Template.baseLayout.rendered = function() {
   $.slidebars();
 }
