@@ -12,5 +12,6 @@ Template.baseLayout.events({
 })
 
 Template.baseLayout.rendered = function() {
+  Meteor.subscribe('tournaments')
   $.slidebars();
 }

@@ -105,3 +105,8 @@ Template.results.events({
     Meteor.call('editScoreField2', score, id)
   }
 })
+
+Template.results.rendered = function() {
+  console.log(this.data.id)
+  Meteor.subscribe('results')
+}
