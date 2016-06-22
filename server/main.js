@@ -18,13 +18,13 @@ function updateResults() {
       var self = this;
       var i = 1;
       // Firring first api call to get ammount of rounds in current tournament
-      HTTP.get('https://api.leaguevine.com/v1/swiss_rounds/?tournament_id='+tournament.tournamentId+'&fields=%5Bforced_byes%5D&limit=1&access_token=eb05d96dbe', function(error, response){
+      HTTP.get('https://api.leaguevine.com/v1/swiss_rounds/?tournament_id='+tournament.tournamentID+'&fields=%5Bforced_byes%5D&limit=1&access_token=eb05d96dbe', function(error, response){
         roundCount = response.data.meta.total_count;
         console.log(tournament.name+" Has: "+roundCount+" rounds.");
         // looping for each round
         while(i<=roundCount){
           // fires async http request that requests every round in the tournament
-          HTTP.get('https://api.leaguevine.com/v1/swiss_rounds/?tournament_id='+tournament.tournamentId+'&round_number='+i+'&access_token=6fe6daa931', function(error, response){
+          HTTP.get('https://api.leaguevine.com/v1/swiss_rounds/?tournament_id='+tournament.tournamentID+'&round_number='+i+'&access_token=6fe6daa931', function(error, response){
             // Checks if round is empty
             if(response.data.meta.total_count === 0){
               console.log("Empty swiss round !!!!! <---- error in the api - round is invisible")
