@@ -27,16 +27,16 @@ body {
 	background: #fff;
 }
 
-/* ICON FONT SHIRT */
+/* ICON FONT WINDMILL */
 @charset "UTF-8";
 
 @font-face {
   font-family: "windmill";
-  src:url("/fonts/windmill.eot");
-  src:url("/fonts/windmill.eot?#iefix") format("embedded-opentype"),
-    url("/fonts/windmill.woff") format("woff"),
-    url("/fonts/windmill.ttf") format("truetype"),
-    url("/fonts/windmill.svg#windmill") format("svg");
+  src:url("fonts/windmill.eot");
+  src:url("fonts/windmill.eot?#iefix") format("embedded-opentype"),
+    url("fonts/windmill.woff") format("woff"),
+    url("fonts/windmill.ttf") format("truetype"),
+    url("fonts/windmill.svg#windmill") format("svg");
   font-weight: normal;
   font-style: normal;
 
@@ -70,5 +70,8 @@ body {
 
 .icon-tshirt:before {
   content: "\61";
+}
+.icon-close:before {
+  content: "\62";
 }
 
