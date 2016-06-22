@@ -5,10 +5,12 @@ Template.baseLayout.helpers({
 });
 
 Template.baseLayout.events({
-  'click a' (event){
+  'click .menuAnchor' (event){
     $("#sb-site").css("transform", "translate(0px)");
     $(".sb-slidebar").removeClass("sb-active");
-  }
+    var pageName = event.toElement.text;
+    $("#pageName")[0].innerText = pageName;
+  },
 })
 
 Template.baseLayout.rendered = function() {

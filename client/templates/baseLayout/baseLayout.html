@@ -11,24 +11,24 @@
       <ul>
         {{#each tournament}}
           <li>
-            <a href="/results/{{tournamentID}}/live"><i class="fa fa-trophy" aria-hidden="true"></i> {{name}}</a>
+            <a class="menuAnchor" href="/results/{{tournamentID}}/live"><i class="fa fa-trophy" aria-hidden="true"></i> {{name}}</a>
           </li>
         {{/each}}
         <li>
-          <a href="/fieldplan"><i class="fa fa-map-marker" aria-hidden="true"></i> Field plan</a>
+          <a class="menuAnchor" href="/fieldplan"><i class="fa fa-map-marker" aria-hidden="true"></i> Field plan</a>
         </li>
         {{#if currentUser}}
         <li>
-          <a href="/settings"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
+          <a class="menuAnchor" href="/settings"><i class="fa fa-cog" aria-hidden="true"></i> Settings</a>
         </li>
         {{/if}}
         {{#if currentUser}}
           <li>
-            <a href="/account"><i class="fa fa-user" aria-hidden="true"></i> Log-out</a>
+            <a class="menuAnchor" href="/account"><i class="fa fa-user" aria-hidden="true"></i> Log-out</a>
           </li>
         {{else}}
           <li>
-            <a href="/account"><i class="fa fa-user" aria-hidden="true"></i> Log-in</a>
+            <a class="menuAnchor" href="/account"><i class="fa fa-user" aria-hidden="true"></i> Log-in</a>
           </li>
         {{/if}}
       </ul>
@@ -37,7 +37,7 @@
   <section id="sb-site">
     <header>
       <a class="sb-toggle-left" href=""><i class="fa fa-bars"></i></a>
-      <h1><i class="fa fa-trophy" aria-hidden="true"></i> Windmill</h1>
+      <h1 id="pageName"><i class="fa fa-trophy" aria-hidden="true"></i> Windmill</h1>
     </header>
   {{>yield}}
 
