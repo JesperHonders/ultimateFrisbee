@@ -71,6 +71,10 @@ time, mark, audio, video {
 	left: .5em;
 }
 
+.sb-toggle-left:active, .sb-toggle-left:focus {
+	color: #fff;
+}
+
 /* Header */
 header {
 	background: #2caae1;
