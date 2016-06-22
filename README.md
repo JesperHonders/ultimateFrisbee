@@ -189,9 +189,110 @@ var games = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: h
     return _.sortBy(gamesByRound, function(round){
       return round.roundNumber;
     }).reverse();
+    
     ```
     
-    in this week we also fixed the scorekeeping functionality, 
+    in this week we also fixed the scorekeeping functionality, wich uses a http request wich works like the following:
+    
+    ```javascript
+    HTTP.post('https://api.leaguevine.com/v1/game_scores/', {headers: {'Content-Type': 'application/json','Accept': 'application/json','Authorization': 'bearer 4d7da879a1'},data: { "game_id": this.meta.gameID,"team_1_score": this.doc.team_1_score + 1,"team_2_score": this.doc.team_2_score,"is_final": "True"}
+ +    }, function( error, response ) {
+ +      if ( error ) {
+ +        console.log( error );
+ +      } else {
+ +        console.log( response );
+ +      }
+ +    });
+    ```
+    
+    also we changed the way how we display data: 
+    
+    '''
+    <template name="results">
+  <ul class="results">
+    {{#each results}}
+      <div class="round-block">
+
+        <section class="round-heading">
+          <h2>Round {{roundNumber}}</h2>
+        </section>
+        
+        {{#each games}}
+          <li class="resultRow">
+
+              <div class="resultRowShow">
+                <table>
+                  <tbody>
+                      <tr>
+
+                        <td class="team-name col-md-4 col-sm-4 col-xs-4 text-right">
+                            {{doc.team_1_name}}
+                        </td>
+
+                        <td class="col-md-1 col-sm-1 col-xs-1 text-center">
+                            <i class="icon-tshirt"></i>
+                        </td>
+
+                        <td class="col-md-2 col-sm-2 col-xs-2 text-center">
+                            <p class="field">{{meta.field}}</p><br>
+                            <p class="score-time">{{doc.team_1_score}} - {{doc.team_2_score}}</p>
+                        </td>
+
+                        <td class="col-md-1 col-sm-1 col-xs-1 text-center">
+                            <i class="icon-tshirt"></i>
+                        </td>
+
+                        <td class="team-name col-md-4 col-sm-4 col-xs-4 text-left">
+                            {{doc.team_2_name}}
+                        </td>
+
+                      </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div data-id="{{_id}}" class="hiddenRow">
+                <div class="meta-data-row">
+
+                  <i class="close-hidden-row fa fa-times" aria-hidden="true"></i>
+
+                  <div class="col-md-12 col-xs-12 text-center">
+                      <p class="hidden-field">{{meta.field}}</p><br>
+                      <p class="hidden-time">16:00</p>
+                  </div>
+
+                  <div class="col-md-6 col-xs-6 text-center">
+                      <i class="icon-tshirt"></i>
+                      <h2>{{doc.team_1_name}}</h2>
+                  </div>
+
+                  <div class="col-md-6 col-xs-6 text-center">
+                      <i class="icon-tshirt"></i>
+                      <h2>{{doc.team_2_name}}</h2>
+                  </div>
+
+                  <div class="col-md-12 col-xs-12">
+                      <div class="col-md-6 col-xs-6 text-center">
+                          <p><button class="button btn-secondary team-1-score-min">-</button> <span>{{doc.team_1_score}}</span> <button class="button team-1-score-plus">+</button></p>
+                      </div>
+
+                      <div class="col-md-6 col-xs-6 text-center">
+                          <p><button class="button btn-secondary team-2-score-min">-</button> <span>{{doc.team_2_score}}</span> <button class="button team-2-score-plus">+</button></p>
+                      </div>
+                  </div>
+
+                  
+
+                </div>
+              </div>
+          </li>
+        {{/each}}
+
+      </div>
+    {{/each}}
+  </ul>
+</template>
+'''
 
 
 
