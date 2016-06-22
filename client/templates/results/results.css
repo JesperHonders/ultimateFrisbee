@@ -2,7 +2,7 @@
 
 /* Sub nav */
 header.header-sub-nav {
-	padding-top: 1em;
+	padding-top: .5em;
 }
 
 /* Round block */
@@ -123,5 +123,9 @@ select.color-picker {
     background: url('/img/down-arrow.png') no-repeat;
     background-position: 94px 3px;
     background-size: 15px;
+}
+
+select.color-picker:focus {
+	outline: none;
 }
 
