@@ -1,5 +1,10 @@
 /* --- RESULTS ROW NOT HIDDEN --- */
 
+/* Sub nav */
+header.header-sub-nav {
+	padding-top: 1em;
+}
+
 /* Round block */
 .results {
 	background: #F0F0F0;
