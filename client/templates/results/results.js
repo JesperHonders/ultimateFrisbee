@@ -12,15 +12,15 @@ Template.results.helpers({
         $(this).removeClass("active");
       })
       $("#finished").addClass("active");
-      var games = results.find({"meta.tournamentID": pageId, "meta.winner": {$ne:null}}).fetch();
+      var games = results.find({"meta.tournamentID": pageId, "meta.winner": {$ne:null}}, {sort: {"meta.field": 1}}).fetch();
     } else if (this.mode === "live") {
-      var games = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "meta.winner": null, "time.startHour": {$gte: hour, $lte: hour+1}}).fetch();
+      var games = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "meta.winner": null, "time.startHour": {$gte: hour, $lte: hour+1}}, {sort: {"meta.field": 1}}).fetch();
     } else if (this.mode === "upcomming") {
       $(".mode-toggler").each(function(){
         $(this).removeClass("active");
       })
       $("#upcomming").addClass("active");
-      var games = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: hour}, "doc.team_1_score": 0, "doc.team_2_score": 0 }).fetch()
+      var games = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: hour}, "doc.team_1_score": 0, "doc.team_2_score": 0 }, {sort: {"meta.field": 1}}).fetch()
     }
     var rounds = _.uniq(_.map(games, function(game){
       return game.meta.round_number
