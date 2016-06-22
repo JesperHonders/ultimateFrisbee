@@ -58,8 +58,24 @@ Template.results.events({
   },
   'click .submit-score'(event) {
     var gameID = this.meta.gameID;
-    Meteor.call("finalizeScore", gameID)
-    noty({text: 'Succesfully send score to leaguevine'})
+    noty({
+      text: 'Are you sure you want to end this game?',
+      type: 'confirm',
+      buttons: [
+           {
+               addClass: 'btn btn-primary', text: 'Yes', onClick: function ($noty) {
+                   $noty.close();
+                   Meteor.call("finalizeScore", gameID)
+                   noty({ text: 'Score send', type: 'success' });
+               }
+           },
+           {
+               addClass: 'btn btn-danger', text: 'No', onClick: function ($noty) {
+                   $noty.close();
+               }
+           }
+        ]
+    })
   },
 
   'click .team-1-score-plus' (event) {
