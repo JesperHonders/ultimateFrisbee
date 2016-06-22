@@ -43,8 +43,10 @@ function updateResults() {
                     var doc = {
                       team_1_name: item.team_1.name,
                       team_1_score: item.team_1_score,
+                      team_1_color: "black",
                       team_2_name: item.team_2.name,
-                      team_2_score: item.team_2_score
+                      team_2_score: item.team_2_score,
+                      team_2_color: "black"
                     };
                   }
                   var meta = {

@@ -19,6 +19,21 @@ Meteor.methods({
     )
   },
 
+  colorShirt1: function(id, color){
+    console.log("Changed shirt")
+    results.update(
+      {_id: id},
+      {$set: {"doc.team_1_color": color}}
+    )
+  },
+
+  colorShirt2: function(id, color){
+    results.update(
+      {_id: id},
+      {$set: {"doc.team_2_color": color}}
+    )
+  },
+
   finalizeScore: function(gameID){
     var game = results.findOne({"meta.gameID": gameID});
     HTTP.post('https://api.leaguevine.com/v1/game_scores/', {headers: {'Content-Type': 'application/json','Accept': 'application/json','Authorization': 'bearer e800ef7f9c'},data: { "game_id": gameID,"team_1_score": game.doc.team_1_score,"team_2_score": game.doc.team_2_score,"is_final": "True"}

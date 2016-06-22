@@ -103,6 +103,16 @@ Template.results.events({
     var id = this._id;
     var score = this.doc.team_2_score-1;
     Meteor.call('editScoreField2', score, id)
+  },
+  'click .picker-1' (event) {
+    var id= this._id;
+    var color = event.toElement.value;
+    Meteor.call("colorShirt1",id,color)
+  },
+  'click .picker-2' (event) {
+    var id= this._id;
+    var color = event.toElement.value;
+    Meteor.call("colorShirt2",id,color)
   }
 })
 

@@ -27,7 +27,7 @@
                         </td>
 
                         <td class="col-md-1 col-sm-1 col-xs-1 text-center">
-                            <i class="icon-tshirt"></i>
+                            <i class="shirt-1 icon-tshirt" style="color: {{doc.team_1_color}}"></i>
                         </td>
 
                         <td class="col-md-2 col-sm-2 col-xs-2 text-center">
@@ -36,7 +36,7 @@
                         </td>
 
                         <td class="col-md-1 col-sm-1 col-xs-1 text-center">
-                            <i class="icon-tshirt"></i>
+                            <i class="shirt-2 icon-tshirt" style="color: {{doc.team_2_color}}"></i>
                         </td>
 
                         <td class="team-name col-md-4 col-sm-4 col-xs-4 text-left">
@@ -59,13 +59,42 @@
                       <p class="hidden-time">16:00</p>
                   </div>
 
+
                   <div class="col-md-6 col-xs-6 text-center">
-                      <i class="icon-tshirt"></i>
+                    <select class="picker-1" name="colorpicker">
+                      <option value="#7bd148">Green</option>
+                      <option value="#5484ed">Bold blue</option>
+                      <option value="#a4bdfc">Blue</option>
+                      <option value="#46d6db">Turquoise</option>
+                      <option value="#7ae7bf">Light green</option>
+                      <option value="#51b749">Bold green</option>
+                      <option value="#fbd75b">Yellow</option>
+                      <option value="#ffb878">Orange</option>
+                      <option value="#ff887c">Red</option>
+                      <option value="#dc2127">Bold red</option>
+                      <option value="#dbadff">Purple</option>
+                      <option value="#e1e1e1">Gray</option>
+                    </select>
+                      <i class="shirt-1 icon-tshirt" style="color: {{doc.team_1_color}}"></i>
                       <h2>{{doc.team_1_name}}</h2>
                   </div>
 
                   <div class="col-md-6 col-xs-6 text-center">
-                      <i class="icon-tshirt"></i>
+                      <select class="picker-2" name="colorpicker">
+                        <option value="#7bd148">Green</option>
+                        <option value="#5484ed">Bold blue</option>
+                        <option value="#a4bdfc">Blue</option>
+                        <option value="#46d6db">Turquoise</option>
+                        <option value="#7ae7bf">Light green</option>
+                        <option value="#51b749">Bold green</option>
+                        <option value="#fbd75b">Yellow</option>
+                        <option value="#ffb878">Orange</option>
+                        <option value="#ff887c">Red</option>
+                        <option value="#dc2127">Bold red</option>
+                        <option value="#dbadff">Purple</option>
+                        <option value="#e1e1e1">Gray</option>
+                      </select>
+                      <i class="shirt-2 icon-tshirt" style="color: {{doc.team_2_color}}"></i>
                       <h2>{{doc.team_2_name}}</h2>
                   </div>
 
