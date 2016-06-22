@@ -116,3 +116,12 @@ table {
 	color: gainsboro;
 	z-index: 9999;
 }
+
+/* Color picker */
+select.color-picker {
+	border: 1px solid #F0F0F0;
+    background: url('/img/down-arrow.png') no-repeat;
+    background-position: 94px 3px;
+    background-size: 15px;
+}
+
