@@ -91,7 +91,7 @@ At least the data was stored in a local database based on MONGODB
 
 The HTML we used to display the data is shown below
 
-```
+```html
 <template name="results">
   <h1>results page: men</h1>
   <h2>Results refresh every minute</h2>
@@ -189,7 +189,6 @@ var games = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: h
     return _.sortBy(gamesByRound, function(round){
       return round.roundNumber;
     }).reverse();
-    
     ```
     
     in this week we also fixed the scorekeeping functionality, wich uses a http request wich works like the following:
@@ -207,7 +206,7 @@ var games = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: h
     
     also we changed the way how we display data: 
     
-    '''
+    ```html
     <template name="results">
   <ul class="results">
     {{#each results}}
@@ -292,7 +291,15 @@ var games = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: h
     {{/each}}
   </ul>
 </template>
-'''
+```
+
+##Week 5
+
+The final week of the project. This week we added a few extras like shirt color changes, confirmations and several UI/UX improvements.
+
+#Installation
+
+To install this application you need meteor. Just clone and run meteor, then you are good to go.
 
 
 
