@@ -20,6 +20,13 @@ Meteor.methods({
     )
   },
 
+  endGame: function(id){
+    results.update(
+      {_id: id},
+      {$set: {"meta.winner": "set"}}
+    )
+  },
+
   colorShirt1: function(id, color){
     console.log("Changed shirt")
     results.update(

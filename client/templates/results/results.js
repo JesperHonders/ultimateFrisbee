@@ -58,6 +58,7 @@ Template.results.events({
   },
   'click .submit-score'(event) {
     var gameID = this.meta.gameID;
+    var id = this._id;
     noty({
       text: 'Are you sure you want to end this game?',
       type: 'confirm',
@@ -66,6 +67,7 @@ Template.results.events({
                addClass: 'btn btn-primary', text: 'Yes', onClick: function ($noty) {
                    $noty.close();
                    Meteor.call("finalizeScore", gameID)
+                   Meteor.call("endGame", id)
                    noty({ text: 'Score send', type: 'success' });
                }
            },
