@@ -1,5 +1,6 @@
 Template.results.helpers({
   results: function() {
+    console.log('results');
     var pageId= parseInt(this.id);
     var today = new Date();
     var dd = today.getDate();
@@ -37,7 +38,7 @@ Template.results.helpers({
     }).reverse();
   },
   templateGestures: {
-    'tap .resultRowShow': function (event, templateInstance) {
+    'tap .resultRowShow':function (event, templateInstance) {
       $('[data-id="'+this._id+'"]').slideToggle();
       $('[data-id="'+this._id+'"]').closest("li").toggleClass("show");
     }
@@ -46,17 +47,20 @@ Template.results.helpers({
 
 
 Template.results.events({
-  'click .mode-toggler' (event) {
+  'click .team-1-score-plus': function (event) {
+    alert('click');
+  },
+  'click .mode-toggler':function (event) {
     $(".mode-toggler").each(function(){
       $(this).removeClass("active");
     })
     $(event.toElement).addClass("active");
   },
-  'click .close-hidden-row'(event) {
+  'click .close-hidden-row':function (event) {
     $('[data-id="'+this._id+'"]').closest("li").toggleClass("show");
     $('[data-id="'+this._id+'"]').slideToggle();
   },
-  'click .submit-score'(event) {
+  'click .submit-score':function (event) {
     var gameID = this.meta.gameID;
     var id = this._id;
     noty({
@@ -80,42 +84,42 @@ Template.results.events({
     })
   },
 
-  'click .team-1-score-plus' (event) {
+  'click .team-1-score-plus':function (event) {
     console.log(this.doc.team_1_score+1);
     var id = this._id;
     var team = "team_1"
     var score = this.doc.team_1_score+1;
     Meteor.call('editScoreField1', score, id)
   },
-  'click .team-1-score-min' (event) {
+  'click .team-1-score-min':function (event) {
     console.log(this.doc.team_1_score-1);
     var id = this._id;
     var team = "team_1"
     var score = this.doc.team_1_score-1;
     Meteor.call('editScoreField1', score, id)
   },
-  'click .team-2-score-plus' (event) {
+  'click .team-2-score-plus':function (event) {
     console.log(this.doc.team_2_score+1);
     var id = this._id;
     var score = this.doc.team_2_score+1;
     Meteor.call('editScoreField2', score, id)
   },
-  'click .team-2-score-min' (event) {
+  'click .team-2-score-min':function (event) {
     console.log(this.doc.team_2_score-1);
     var id = this._id;
     var score = this.doc.team_2_score-1;
     Meteor.call('editScoreField2', score, id)
-  },
-  'change .picker-1' (event) {
-    var id= this._id;
-    var color = event.target.value;
-    Meteor.call("colorShirt1",id,color)
-  },
-  'change .picker-2' (event) {
-    var id= this._id;
-    var color = event.target.value;
-    Meteor.call("colorShirt2",id,color)
   }
+  // 'change .picker-1':function (event) {
+  //   var id= this._id;
+  //   var color = event.target.value;
+  //   Meteor.call("colorShirt1",id,color)
+  // },
+  // 'change .picker-2':function (event) {
+  //   var id= this._id;
+  //   var color = event.target.value;
+  //   Meteor.call("colorShirt2",id,color)
+  // }
 })
 
 Template.results.rendered = function() {

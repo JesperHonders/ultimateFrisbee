@@ -48,7 +48,6 @@
                 </table>
               </div>
             {{/HammerTouchArea}}
-            {{#if currentUser}}
               <div data-id="{{_id}}" class="hiddenRow">
                 <div class="meta-data-row">
 
@@ -123,14 +122,13 @@
                           <p><button class="button btn-secondary team-2-score-min">-</button> <span>{{doc.team_2_score}}</span> <button class="button team-2-score-plus">+</button></p>
                       </div>
                   </div>
-
-                  <div class="col-md-12 col-xs-12 text-center">
-                    <a href="#" class="button submit-score btn-tertiary"><i class="fa fa-check" aria-hidden="true"></i> Finalize score</a>
-                  </div>
-
+                  {{#if currentUser}}
+                    <div class="col-md-12 col-xs-12 text-center">
+                      <a href="#" class="button submit-score btn-tertiary"><i class="fa fa-check" aria-hidden="true"></i> Finalize score</a>
+                    </div>
+                  {{/if}}
                 </div>
               </div>
-            {{/if}}
           </li>
         {{/each}}
 
