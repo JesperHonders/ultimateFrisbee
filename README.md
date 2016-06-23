@@ -303,6 +303,10 @@ also we changed the way how we display data:
 
 The final week of the project. This week we added a few extras like shirt color changes, confirmations and several UI/UX improvements.
 
+The shirt color is done by using an select html element that writes on change to our mobgodb. It adds an extra set of fields that hold hex color codes.
+
+The confirmations are done by a jquery plugin called noty. Using noty its really easy to notify the user about changes with the use of a small library.
+
 #Installation
 
 To install this application you need meteor. Just clone and run meteor, then you are good to go.
