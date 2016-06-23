@@ -109,17 +109,17 @@ Template.results.events({
     var id = this._id;
     var score = this.doc.team_2_score-1;
     Meteor.call('editScoreField2', score, id)
+  },
+  'change .picker-1':function (event) {
+    var id= this._id;
+    var color = event.target.value;
+    Meteor.call("colorShirt1",id,color)
+  },
+  'change .picker-2':function (event) {
+    var id= this._id;
+    var color = event.target.value;
+    Meteor.call("colorShirt2",id,color)
   }
-  // 'change .picker-1':function (event) {
-  //   var id= this._id;
-  //   var color = event.target.value;
-  //   Meteor.call("colorShirt1",id,color)
-  // },
-  // 'change .picker-2':function (event) {
-  //   var id= this._id;
-  //   var color = event.target.value;
-  //   Meteor.call("colorShirt2",id,color)
-  // }
 })
 
 Template.results.rendered = function() {
