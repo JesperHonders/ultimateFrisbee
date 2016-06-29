@@ -1,4 +1,4 @@
-Template.results.helpers({
+Template.upcomming.helpers({
   results: function() {
     console.log('results');
     var pageId= parseInt(this.id);
@@ -8,7 +8,7 @@ Template.results.helpers({
     var yyyy = today.getFullYear();
     var hour = today.getHours();
     var minute = today.getMinutes();
-    var games = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "meta.winner": null, "time.startHour": {$gte: hour, $lte: hour+1}}, {sort: {"meta.field": 1}}).fetch();
+    var games = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: hour}, "doc.team_1_score": 0, "doc.team_2_score": 0 }, {sort: {"meta.field": 1}}).fetch()
     var rounds = _.uniq(_.map(games, function(game){
       return game.meta.round_number
     }));
@@ -32,7 +32,7 @@ Template.results.helpers({
 });
 
 
-Template.results.events({
+Template.upcomming.events({
   'click .team-1-score-plus': function (event) {
     alert('click');
   },
@@ -108,7 +108,7 @@ Template.results.events({
   }
 })
 
-Template.results.rendered = function() {
+Template.upcomming.rendered = function() {
   console.log(this.data.id)
   Meteor.subscribe('results')
 }

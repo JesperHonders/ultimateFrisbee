@@ -1,4 +1,4 @@
-Template.results.helpers({
+Template.finished.helpers({
   results: function() {
     console.log('results');
     var pageId= parseInt(this.id);
@@ -8,20 +8,20 @@ Template.results.helpers({
     var yyyy = today.getFullYear();
     var hour = today.getHours();
     var minute = today.getMinutes();
-    var games = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "meta.winner": null, "time.startHour": {$gte: hour, $lte: hour+1}}, {sort: {"meta.field": 1}}).fetch();
+    var games = results.find({"meta.tournamentID": pageId, "meta.winner": {$ne:null}}, {sort: {"meta.field": 1}}).fetch();
     var rounds = _.uniq(_.map(games, function(game){
       return game.meta.round_number
     }));
-    var gamesByRound = _.map(rounds, function(round){
+    return gamesByRound = _.map(rounds, function(round){
       var roundGames = games.filter(function(game){
         return game.meta.round_number === round
       })
       return {roundNumber: roundGames[0].meta.round_number, games: roundGames}
     })
 
-    return _.sortBy(gamesByRound, function(round){
-      return round.roundNumber;
-    }).reverse();
+    // return _.sortBy(gamesByRound, function(round){
+    //   return round.roundNumber;
+    // }).reverse();
   },
   templateGestures: {
     'tap .resultRowShow':function (event, templateInstance) {
@@ -32,7 +32,7 @@ Template.results.helpers({
 });
 
 
-Template.results.events({
+Template.finished.events({
   'click .team-1-score-plus': function (event) {
     alert('click');
   },
@@ -108,7 +108,7 @@ Template.results.events({
   }
 })
 
-Template.results.rendered = function() {
+Template.finished.rendered = function() {
   console.log(this.data.id)
   Meteor.subscribe('results')
 }

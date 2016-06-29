@@ -5,9 +5,21 @@ Router.configure({
 Router.map(function(){
   this.route('home',{path: '/'})
   this.route('results',{
-    path: '/results/:id/:mode',
+    path: '/results/:id/live',
     data: function(){
-      return {id: this.params.id, mode: this.params.mode}
+      return {id: this.params.id}
+    }
+  }),
+  this.route('finished',{
+    path: '/results/:id/finished',
+    data: function(){
+      return {id: this.params.id}
+    }
+  }),
+  this.route('upcomming',{
+    path: '/results/:id/upcomming',
+    data: function(){
+      return {id: this.params.id}
     }
   }),
   this.route('game',{
