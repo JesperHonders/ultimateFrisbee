@@ -1,3 +1,6 @@
+score1running = false;
+score2running = false;
+
 Meteor.methods({
   addTournament: function(id, name){
     tournaments.insert({tournamentID: id, name: name})
@@ -8,16 +11,22 @@ Meteor.methods({
     tournaments.remove({_id: id})
   },
   editScoreField1: function(score, id){
+    if (score1running) return;
+    score1running = true;
     results.update(
       {_id: id},
       {$set: {"doc.team_1_score": score}}
     )
+    setTimeout(function(){ score1running = false;}, 3000);
   },
   editScoreField2: function(score, id){
+    if (score2running) return;
+    score2running = true;
     results.update(
       {_id: id},
       {$set: {"doc.team_2_score": score}}
     )
+    setTimeout(function(){ score1running = false;}, 3000);
   },
 
   endGame: function(id){
