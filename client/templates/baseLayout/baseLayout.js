@@ -2,18 +2,37 @@ Template.baseLayout.helpers({
   tournament: function() {
     return tournaments.find({});
   },
+  hasClass: function(el, cls){}
 });
 
 Template.baseLayout.events({
   'click .menuAnchor' (event){
-    $("#sb-site").css("transform", "translate(0px)");
-    $(".sb-slidebar").removeClass("sb-active");
     var pageName = event.toElement.text;
     $("#pageName")[0].innerText = pageName;
+    document.getElementById('CanvasMenu').className = '';
+    document.getElementById('contentWrapper').className = '';
+    document.getElementById('sb-toggle-left').className = '';
   },
+  'click #sb-toggle-left' (event){
+    var el = toggleButton = document.getElementById('sb-toggle-left');
+    var cls = 'active';
+    var hasClass = el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
+    if (hasClass) {
+      // element is active
+      el.className = '';
+      document.getElementById('CanvasMenu').className = ''
+      document.getElementById('contentWrapper').className = ''
+    } else {
+      // element is not active
+      el.className += 'active';
+      document.getElementById('CanvasMenu').className = 'active'
+      document.getElementById('CanvasMenu').style.transform = ''
+      document.getElementById('contentWrapper').className = 'active'
+      document.getElementById('contentWrapper').style.transform = ''
+    }
+  }
 })
 
 Template.baseLayout.rendered = function() {
-  Meteor.subscribe('tournaments')
-  $.slidebars();
+  Meteor.subscribe('tournaments');
 }

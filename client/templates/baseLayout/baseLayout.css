@@ -19,59 +19,79 @@ time, mark, audio, video {
 	font: inherit;
 }
 
-#offCanvasMenu {
+body{
+	overflow: hidden;
+}
+
+#CanvasMenu {
+	position: absolute;
+	height:100vh;
   width: 320px;
   transform: translateX(-320px);
   float: left;
+	transition: all 0.5s;
+}
+
+#CanvasMenu.active {
+	transform: translateX(0);
+	transition: all 0.5s;
 }
 
 #contentWrapper{
-  float: left;
+	transform: translateX(0);
+	transition: all 0.5s;
 }
 
+#contentWrapper.active {
+	transform: translateX(320px);
+	transition: all 0.5s;
+}
+
+
+
 /* Navigation left */
-.sb-slidebar {
+#CanvasMenu {
 	background: #232333;
 	color: #7bcfda;
 	z-index: 999;
 }
 
-.sb-slidebar nav ul {
+#CanvasMenu nav ul {
 	padding-top: 1.9em;
 }
 
-.sb-slidebar nav ul li {
+#CanvasMenu nav ul li {
 	padding: 0 1em;
 }
 
-.sb-slidebar nav ul li.active {
+#CanvasMenu nav ul li.active {
 	background: rgba(255,255,255,.1);
 }
 
-.sb-slidebar a, .sb-slidebar a:visited {
+#CanvasMenu a, .sb-slidebar a:visited {
 	color: #7bcfda;
 	text-decoration: none;
 }
 
-.sb-slidebar li {
+#CanvasMenu li {
 	list-style: none;
 	line-height: 3;
 }
 
-.sb-slidebar i {
+#CanvasMenu i {
 	min-width: 16px;
 	padding: auto;
 }
 
 /* Toggle navigation */
-.sb-toggle-left {
+#sb-toggle-left {
 	font-size: 2em;
 	position: absolute;
 	top: 1em;
 	left: .5em;
 }
 
-.sb-toggle-left:active, .sb-toggle-left:focus, .sb-toggle-left:visited {
+#sb-toggle-left:active, #sb-toggle-left:focus, #sb-toggle-left:visited {
 	color: #fff;
 }
 

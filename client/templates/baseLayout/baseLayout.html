@@ -8,7 +8,7 @@
 </head>
 
 <template name="baseLayout">
-  <section class="sb-slidebar sb-left">
+  <section id="CanvasMenu">
     <nav>
       <ul>
         {{#each tournament}}
@@ -36,9 +36,9 @@
       </ul>
     </nav>
   </section>
-  <section id="sb-site">
+  <section id="contentWrapper">
     <header>
-      <a class="sb-toggle-left" href=""><i class="fa fa-bars"></i></a>
+      <a id="sb-toggle-left" href=""><i class="fa fa-bars"></i></a>
       <h1 id="pageName"><i class="fa fa-trophy" aria-hidden="true"></i> Windmill</h1>
     </header>
   {{>yield}}
