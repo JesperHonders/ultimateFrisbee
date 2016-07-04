@@ -12,16 +12,16 @@ Template.finished.helpers({
     var rounds = _.uniq(_.map(games, function(game){
       return game.meta.round_number
     }));
-    return gamesByRound = _.map(rounds, function(round){
+    var gamesByRound = _.map(rounds, function(round){
       var roundGames = games.filter(function(game){
         return game.meta.round_number === round
       })
       return {roundNumber: roundGames[0].meta.round_number, games: roundGames}
     })
 
-    // return _.sortBy(gamesByRound, function(round){
-    //   return round.roundNumber;
-    // }).reverse();
+    return _.sortBy(gamesByRound, function(round){
+      return round.roundNumber;
+    }).reverse();
   },
   templateGestures: {
     'tap .resultRowShow':function (event, templateInstance) {

@@ -7,13 +7,13 @@
   </section>
 </header>
   <ul class="results">
+    <h1 id="nothingFound" class="hidden">Currently no live games</h1>
     {{#each results}}
       <div class="round-block">
 
         <section class="round-heading">
           <h2>Round {{roundNumber}}</h2>
         </section>
-
         {{#each games}}
           <li class="resultRow">
             {{#HammerTouchArea gestureMap=templateGestures}}
@@ -75,7 +75,7 @@
                       <option value="#A52A2A">Red brown</option>
                       <option value="#8A2BE2">Purple</option>
                       <option value="#778899">Gray metal</option>
-                      <option value="#C0C0C0">Gray</option> 
+                      <option value="#C0C0C0">Gray</option>
                       <option value="#FFA500">Orange</option>
                       <option value="#9ACD32">Light green</option>
                       <option value="#32CD32">Green</option>
@@ -102,7 +102,7 @@
                         <option value="#A52A2A">Red brown</option>
                         <option value="#8A2BE2">Purple</option>
                         <option value="#778899">Gray metal</option>
-                        <option value="#C0C0C0">Gray</option> 
+                        <option value="#C0C0C0">Gray</option>
                         <option value="#FFA500">Orange</option>
                         <option value="#9ACD32">Light green</option>
                         <option value="#32CD32">Green</option>

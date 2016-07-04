@@ -20,7 +20,7 @@ time, mark, audio, video {
 }
 
 body{
-	overflow: hidden;
+	overflow-x: hidden;
 }
 
 #CanvasMenu {

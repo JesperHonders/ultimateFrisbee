@@ -9,6 +9,7 @@ Template.results.helpers({
     var hour = today.getHours();
     var minute = today.getMinutes();
     var games = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "meta.winner": null, "time.startHour": {$gte: hour, $lte: hour+1}}, {sort: {"meta.field": 1}}).fetch();
+    amountOfGames = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "meta.winner": null, "time.startHour": {$gte: hour, $lte: hour+1}}, {sort: {"meta.field": 1}}).count();
     var rounds = _.uniq(_.map(games, function(game){
       return game.meta.round_number
     }));
@@ -111,4 +112,10 @@ Template.results.events({
 Template.results.rendered = function() {
   console.log(this.data.id)
   Meteor.subscribe('results')
+  setTimeout(function(){
+    if (amountOfGames === 0){
+      document.getElementById('nothingFound').className = '';
+    }
+  },500)
+  document.getElementById('loading').style.display = 'none';
 }
