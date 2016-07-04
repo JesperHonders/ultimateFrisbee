@@ -33,15 +33,6 @@ Template.upcomming.helpers({
 
 
 Template.upcomming.events({
-  'click .team-1-score-plus': function (event) {
-    alert('click');
-  },
-  'click .mode-toggler':function (event) {
-    $(".mode-toggler").each(function(){
-      $(this).removeClass("active");
-    })
-    $(event.toElement).addClass("active");
-  },
   'click .close-hidden-row':function (event) {
     $('[data-id="'+this._id+'"]').closest("li").toggleClass("show");
     $('[data-id="'+this._id+'"]').slideToggle();
