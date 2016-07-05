@@ -9,6 +9,10 @@
 	margin-top: 2em;
 }
 
+.at-form p {
+	margin-bottom: 1em;
+}
+
 .at-form input {
 	font-size: 1em;
 	padding: .5em;
@@ -39,11 +43,19 @@
 	border: none;
 }
 
-.at-signup-link, .at-signin-link {
+.at-form-login-notice {
 	margin-top: 3em;
 	color: #777;
+	text-align: center;
+	font-style: italic;
 }
 
-.at-signup-link a, .at-signin-link a {
-	color: #2caae1;
+.at-signup-link, .at-signin-link {
+	/*margin-top: 3em;
+	color: #777;*/
+	display: none;
 }
+
+/*.at-signup-link a, .at-signin-link a {
+	color: #2caae1;
+}*/
