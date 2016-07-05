@@ -170,3 +170,16 @@ select.color-picker:focus {
   font-size: 1em;
   display: inline-block;
 }
+
+/* No games */
+#nothingFound {
+	text-align: center;
+    margin-top: 2em;
+    font-size: 1.5em;
+    color: grey;
+}
+
+#nothingFound i {
+	font-size: 3em;
+	margin-bottom: .2em;
+}
