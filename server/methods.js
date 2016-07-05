@@ -4,7 +4,6 @@ score2running = false;
 Meteor.methods({
   addTournament: function(id, name){
     tournaments.insert({tournamentID: id, name: name})
-    console.log('added: '+name+" with id: "+id)
     Meteor.call("updateResults");
   },
   removeTournament: function(id){
@@ -17,7 +16,7 @@ Meteor.methods({
       {_id: id},
       {$set: {"doc.team_1_score": score}}
     )
-    setTimeout(function(){ score1running = false;}, 3000);
+    setTimeout(function(){ score1running = false;}, 1000);
   },
   editScoreField2: function(score, id){
     if (score2running) return;
@@ -26,7 +25,7 @@ Meteor.methods({
       {_id: id},
       {$set: {"doc.team_2_score": score}}
     )
-    setTimeout(function(){ score1running = false;}, 3000);
+    setTimeout(function(){ score2running = false;}, 1000);
   },
 
   endGame: function(id){
@@ -37,7 +36,6 @@ Meteor.methods({
   },
 
   colorShirt1: function(id, color){
-    console.log("Changed shirt")
     results.update(
       {_id: id},
       {$set: {"doc.team_1_color": color}}
@@ -55,11 +53,6 @@ Meteor.methods({
     var game = results.findOne({"meta.gameID": gameID});
     HTTP.post('https://api.leaguevine.com/v1/game_scores/', {headers: {'Content-Type': 'application/json','Accept': 'application/json','Authorization': 'bearer e800ef7f9c'},data: { "game_id": gameID,"team_1_score": game.doc.team_1_score,"team_2_score": game.doc.team_2_score,"is_final": "True"}
     }, function( error, response ) {
-      if ( error ) {
-        console.log( error );
-      } else {
-        console.log( response );
-      }
     });
   },
 
@@ -70,14 +63,12 @@ Meteor.methods({
       var allTournaments = tournaments.find({}).fetch();
       // Running the code for each tournament
       _.each(allTournaments, function(tournament){
-        console.log('running: '+ tournament.name)
         // this = current tournament
         var self = this;
         var i = 1;
         // Firring first api call to get ammount of rounds in current tournament
         HTTP.get('https://api.leaguevine.com/v1/swiss_rounds/?tournament_id='+tournament.tournamentID+'&fields=%5Bforced_byes%5D&limit=1&access_token=eb05d96dbe', function(error, response){
           roundCount = response.data.meta.total_count;
-          console.log(tournament.name+" Has: "+roundCount+" rounds.");
           // looping for each round
           while(i<=roundCount){
             // fires async http request that requests every round in the tournament
@@ -121,14 +112,12 @@ Meteor.methods({
                     var exists = results.findOne({"meta.gameID": item.id})
                     // if it exists update instead of inserting
                     if (exists){
-                      console.log("Document updated")
                       results.update(
                         {"meta.gameID": item.id},
                         {doc: doc, meta: meta, time: time}
                       )
                       // else insert the document in the local mongoDB
                     } else {
-                      console.log("Document inserted")
                       results.insert({doc, meta, time})
                     }
                 });
