@@ -121,5 +121,5 @@ header a {
 .sub-nav a.active {
 	color: #FAD03B;
 	border-bottom: solid 5px #FAD03B;
-	font-weight: bold;
+	font-weight: 700;
 }

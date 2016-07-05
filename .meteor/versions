@@ -44,6 +44,7 @@ iron:middleware-stack@1.0.11
 iron:router@1.0.12
 iron:url@1.0.11
 jeremy:noty@2.3.7
+johnantoni:meteor-stickynav@0.0.2
 jquery@1.11.8
 launch-screen@1.0.11
 livedata@1.0.18

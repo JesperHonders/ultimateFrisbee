@@ -38,8 +38,11 @@ ul.results {
 
 .resultRow {
 	border-bottom: 1px solid #F0F0F0;
-	padding: 1em 0;
 	overflow-y: scroll;
+}
+
+.resultRowShow {
+	padding: 1em 0;
 }
 
 .resultRow p {
@@ -68,10 +71,11 @@ ul.results {
 }
 
 .hidden-field {
-	background: #F0F0F0;
+	background: #fff;
 	border-radius: 4px;
 	padding: .2em;
 	color: grey;
+	border: 1px solid #fff;
 	font-size: .6em;
 }
 
@@ -89,7 +93,7 @@ ul.results {
 }
 
 .hiddenRow span {
-	font-size: 2em;
+	font-size: 5em;
 	margin: 0 .3em;
 }
 
@@ -101,9 +105,14 @@ table {
 	width: 100%;
 }
 
-.hiddenRow .btn-tertiary i {
-  font-size: 1em;
-  display: inline-block;
+/* Hidden Row Meta Data */
+.meta-data {
+	position:absolute;
+	z-index: 99;
+	top: 1em;
+	color: #fff;
+	left: 50%;
+	transform: translateX(-50%);
 }
 
 /* Close hidden row */
@@ -116,18 +125,48 @@ table {
 	position: absolute;
 	top: .5em;
 	right: .5em;
-	color: gainsboro;
+	color: #fff;
 	z-index: 9999;
 }
 
 /* Color picker */
 select.color-picker {
-	border: 1px solid #F0F0F0;
-    background: url('/img/down-arrow.png') no-repeat;
-    background-position: 94px 3px;
-    background-size: 15px;
+	border: 1px solid #fff;
+	background: none;
+	margin-bottom: 1em;
 }
 
 select.color-picker:focus {
 	outline: none;
+}
+
+.team1 p span, .team2 p span {
+	line-height: 1;
+}
+
+.team2 {
+	color: #fff;
+	padding: 5em 0;
+	background: #2caae1;
+}
+
+.team1 {
+	color: #fff;
+	padding: 5em 0;
+	background: #E2B001;
+}
+
+/* Submit score button */
+.submit-score {
+	position: absolute;
+	bottom: 1em;
+	left: 50%;
+	transform: translateX(-50%);
+	display: inline-block;
+	width: 12em;
+}
+
+.hiddenRow .submit-score i {
+  font-size: 1em;
+  display: inline-block;
 }

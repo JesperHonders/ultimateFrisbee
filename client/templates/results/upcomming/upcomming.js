@@ -110,5 +110,7 @@ Template.upcomming.events({
 
 Template.upcomming.rendered = function() {
   console.log(this.data.id)
-  Meteor.subscribe('results')
+  Meteor.subscribe('results');
+
+  $('.round-heading').stickyNavbar();
 }
