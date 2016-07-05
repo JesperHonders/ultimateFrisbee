@@ -9,11 +9,9 @@
   <ul class="results">
     {{#each results}}
       <div class="round-block">
-
         <section class="round-heading">
           <h2>Round {{roundNumber}}</h2>
         </section>
-
         {{#each games}}
           <li class="resultRow">
             {{#HammerTouchArea gestureMap=templateGestures}}
@@ -32,7 +30,7 @@
 
                         <td class="col-md-2 col-sm-2 col-xs-2 text-center">
                             <p class="field">{{meta.field}}</p><br>
-                            <p class="score-time">{{doc.team_1_score}} - {{doc.team_2_score}}</p>
+                            <p class="score-time">{{time.startHour}}:00</p>
                         </td>
 
                         <td class="col-md-1 col-sm-1 col-xs-1 text-center">
@@ -49,44 +47,42 @@
               </div>
             {{/HammerTouchArea}}
               <div data-id="{{_id}}" class="hiddenRow">
-                <div class="meta-data-row">
 
-                  <i class="close-hidden-row icon-close" aria-hidden="true"></i>
+                  <i class="close-hidden-row fa fa-angle-up" aria-hidden="true"></i>
 
-                  <div class="col-md-12 col-xs-12 text-center">
+                  <div class="meta-data text-center">
                       <p class="hidden-field">{{meta.field}}</p><br>
                       <p class="hidden-time">{{time.startHour}}:00</p>
                   </div>
 
-
-                  <div class="col-md-6 col-xs-6 text-center">
-                    <select class="color-picker picker-1" name="colorpicker">
-                    <option value="#000" disabled selected>Pick a color <i class="fa fa-angle-down" aria-hidden="true"></i></option>
-                      <option value="#FFFF00">Yellow</option>
-                      <option value="#FFD700">Dark yellow</option>
-                      <option value="#DAA520">Gold</option>
-                      <option value="#87CEFA">Light blue</option>
-                      <option value="#1E90FF">Blue</option>
-                      <option value="#194183">Dark blue</option>
-                      <option value="#FFA07A">Salmon pink</option>
-                      <option value="#FF69B4">Pink</option>
-                      <option value="#FF6347">Tomato red</option>
-                      <option value="#DC143C">Red</option>
-                      <option value="#A52A2A">Red brown</option>
-                      <option value="#8A2BE2">Purple</option>
-                      <option value="#778899">Gray metal</option>
-                      <option value="#C0C0C0">Gray</option>
-                      <option value="#FFA500">Orange</option>
-                      <option value="#9ACD32">Light green</option>
-                      <option value="#32CD32">Green</option>
-                      <option value="#2E8B57">Dark Green</option>
-                      <option value="#008080">Turquoise</option>
-                    </select>
-                      <i class="shirt-1 icon-tshirt" style="color: {{doc.team_1_color}}"></i>
+                  <div class="team1 col-md-6 col-xs-6 text-center" style="background: {{doc.team_1_color}}">
+                      <select class="color-picker picker-1" name="colorpicker">
+                        <option value="#000" disabled selected>Pick a color <i class="fa fa-angle-down" aria-hidden="true"></i></option>
+                        <option value="#FFFF00">Yellow</option>
+                        <option value="#FFD700">Dark yellow</option>
+                        <option value="#DAA520">Gold</option>
+                        <option value="#87CEFA">Light blue</option>
+                        <option value="#1E90FF">Blue</option>
+                        <option value="#194183">Dark blue</option>
+                        <option value="#FFA07A">Salmon pink</option>
+                        <option value="#FF69B4">Pink</option>
+                        <option value="#FF6347">Tomato red</option>
+                        <option value="#DC143C">Red</option>
+                        <option value="#A52A2A">Red brown</option>
+                        <option value="#8A2BE2">Purple</option>
+                        <option value="#778899">Gray metal</option>
+                        <option value="#C0C0C0">Gray</option>
+                        <option value="#FFA500">Orange</option>
+                        <option value="#9ACD32">Light green</option>
+                        <option value="#32CD32">Green</option>
+                        <option value="#2E8B57">Dark Green</option>
+                        <option value="#008080">Turquoise</option>
+                      </select>
+                      <i class="shirt-1 icon-tshirt"></i>
                       <h2>{{doc.team_1_name}}</h2>
                   </div>
 
-                  <div class="col-md-6 col-xs-6 text-center">
+                  <div class="team2 col-md-6 col-xs-6 text-center" style="background: {{doc.team_2_color}}">
                       <select class="color-picker picker-2" name="colorpicker">
                         <option value="#000" disabled selected>Pick a color <i class="fa fa-angle-down" aria-hidden="true"></i></option>
                         <option value="#FFFF00">Yellow</option>
@@ -109,29 +105,13 @@
                         <option value="#2E8B57">Dark Green</option>
                         <option value="#008080">Turquoise</option>
                       </select>
-                      <i class="shirt-2 icon-tshirt" style="color: {{doc.team_2_color}}"></i>
+                      <i class="shirt-2 icon-tshirt"></i>
                       <h2>{{doc.team_2_name}}</h2>
                   </div>
 
-                  <div class="col-md-12 col-xs-12">
-                      <div class="col-md-6 col-xs-6 text-center">
-                          <p><button class="button btn-secondary team-1-score-min">-</button> <span>{{doc.team_1_score}}</span> <button class="button team-1-score-plus">+</button></p>
-                      </div>
-
-                      <div class="col-md-6 col-xs-6 text-center">
-                          <p><button class="button btn-secondary team-2-score-min">-</button> <span>{{doc.team_2_score}}</span> <button class="button team-2-score-plus">+</button></p>
-                      </div>
-                  </div>
-                  {{#if currentUser}}
-                    <div class="col-md-12 col-xs-12 text-center">
-                      <a href="#" class="button submit-score btn-tertiary"><i class="fa fa-check" aria-hidden="true"></i> Finalize score</a>
-                    </div>
-                  {{/if}}
-                </div>
               </div>
           </li>
         {{/each}}
-
       </div>
     {{/each}}
   </ul>

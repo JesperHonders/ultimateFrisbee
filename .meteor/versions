@@ -40,13 +40,13 @@ iron:core@1.0.11
 iron:dynamic-template@1.0.12
 iron:layout@1.0.12
 iron:location@1.0.11
-iron:middleware-stack@1.0.11
+iron:middleware-stack@1.1.0
 iron:router@1.0.12
 iron:url@1.0.11
 jeremy:noty@2.3.7
-johnantoni:meteor-stickynav@0.0.2
 jquery@1.11.8
 launch-screen@1.0.11
+less@2.6.0
 livedata@1.0.18
 localstorage@1.0.9
 logging@1.0.12
@@ -63,6 +63,7 @@ modules-runtime@0.6.3
 mongo@1.1.7
 mongo-id@1.0.4
 msavin:mongol@2.0.1
+multiply:iron-router-progress@1.0.2
 npm-bcrypt@0.8.6_1
 npm-mongo@1.4.43
 observe-sequence@1.0.11

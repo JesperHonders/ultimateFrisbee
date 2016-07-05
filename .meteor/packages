@@ -25,4 +25,5 @@ accounts-password
 useraccounts:unstyled
 chriswessels:hammer
 jeremy:noty
-johnantoni:meteor-stickynav
+multiply:iron-router-progress
+iron:middleware-stack@1.1.0
