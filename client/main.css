@@ -161,3 +161,17 @@ button, .button:focus, .btn-secondary:focus, .btn-tertiary:focus {
   position: absolute;
 }
 
+/* Spinner */
+#iron-router-progress {
+  background: #2899ca;
+  box-shadow: none;
+}
+
+#iron-router-progress.spinner:before {
+  border-color: #c7c7c7;
+  position: absolute;
+  top: 250px;
+  left: 50%;
+  margin-left: -10px;
+}
+
