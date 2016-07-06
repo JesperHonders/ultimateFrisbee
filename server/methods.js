@@ -75,7 +75,7 @@ Meteor.methods({
             HTTP.get('https://api.leaguevine.com/v1/swiss_rounds/?tournament_id='+tournament.tournamentID+'&round_number='+i+'&access_token=6fe6daa931', function(error, response){
               // Checks if round is empty
               if(response.data.meta.total_count === 0){
-                console.log("Empty swiss round !!!!! <---- error in the api - round is invisible")
+                return
               }
               else{
                   _.each(response.data.objects[0].games, function(item) {

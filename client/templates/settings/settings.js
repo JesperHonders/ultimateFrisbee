@@ -11,7 +11,6 @@ Template.settings.events({
     var name = $('#formTournamentName').val();
     var tourId = $('#formTournamentId').val();
     var id = parseInt(tourId);
-    console.log(id);
     Meteor.call('addTournament', id, name )
     noty({text: 'Succesfully added tournament', type: 'success'})
     return false

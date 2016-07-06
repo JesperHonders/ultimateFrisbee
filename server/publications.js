@@ -1,5 +1,5 @@
 Meteor.publish('tournaments', function tournamentPublication() {
-   return tournaments.find();
+   return tournaments.find({});
  });
 
  Meteor.publish('results', function resultsPublication() {

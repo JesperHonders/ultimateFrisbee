@@ -1,6 +1,5 @@
 Template.upcomming.helpers({
   results: function() {
-    console.log('results');
     var pageId= parseInt(this.id);
     var today = new Date();
     var dd = today.getDate();
@@ -72,27 +71,23 @@ Template.upcomming.events({
   },
 
   'click .team-1-score-plus':function (event) {
-    console.log(this.doc.team_1_score+1);
     var id = this._id;
     var team = "team_1"
     var score = this.doc.team_1_score+1;
     Meteor.call('editScoreField1', score, id)
   },
   'click .team-1-score-min':function (event) {
-    console.log(this.doc.team_1_score-1);
     var id = this._id;
     var team = "team_1"
     var score = this.doc.team_1_score-1;
     Meteor.call('editScoreField1', score, id)
   },
   'click .team-2-score-plus':function (event) {
-    console.log(this.doc.team_2_score+1);
     var id = this._id;
     var score = this.doc.team_2_score+1;
     Meteor.call('editScoreField2', score, id)
   },
   'click .team-2-score-min':function (event) {
-    console.log(this.doc.team_2_score-1);
     var id = this._id;
     var score = this.doc.team_2_score-1;
     Meteor.call('editScoreField2', score, id)
@@ -110,7 +105,6 @@ Template.upcomming.events({
 })
 
 Template.upcomming.rendered = function() {
-  console.log(this.data.id)
   Meteor.subscribe('results');
   setTimeout(function(){
     if (amountOfGames === 0){

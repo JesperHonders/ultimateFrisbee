@@ -1,6 +1,5 @@
 Template.finished.helpers({
   results: function() {
-    console.log('results');
     var pageId= parseInt(this.id);
     var today = new Date();
     var dd = today.getDate();
@@ -66,27 +65,23 @@ Template.finished.events({
   },
 
   'click .team-1-score-plus':function (event) {
-    console.log(this.doc.team_1_score+1);
     var id = this._id;
     var team = "team_1"
     var score = this.doc.team_1_score+1;
     Meteor.call('editScoreField1', score, id)
   },
   'click .team-1-score-min':function (event) {
-    console.log(this.doc.team_1_score-1);
     var id = this._id;
     var team = "team_1"
     var score = this.doc.team_1_score-1;
     Meteor.call('editScoreField1', score, id)
   },
   'click .team-2-score-plus':function (event) {
-    console.log(this.doc.team_2_score+1);
     var id = this._id;
     var score = this.doc.team_2_score+1;
     Meteor.call('editScoreField2', score, id)
   },
   'click .team-2-score-min':function (event) {
-    console.log(this.doc.team_2_score-1);
     var id = this._id;
     var score = this.doc.team_2_score-1;
     Meteor.call('editScoreField2', score, id)
@@ -104,7 +99,6 @@ Template.finished.events({
 })
 
 Template.finished.rendered = function() {
-  console.log(this.data.id)
   Meteor.subscribe('results');
 
   setTimeout(function(){
@@ -113,71 +107,5 @@ Template.finished.rendered = function() {
     }
   },500)
 
-  var stickyHeaders = (function() {
 
-  var $window = $(window),
-      $stickies;
-
-  var load = function(stickies) {
-
-    if (typeof stickies === "object" && stickies instanceof jQuery && stickies.length > 0) {
-
-      $stickies = stickies.each(function() {
-
-        var $thisSticky = $(this).wrap('<div class="followWrap" />');
-
-        $thisSticky
-            .data('originalPosition', $thisSticky.offset().top)
-            .data('originalHeight', $thisSticky.outerHeight())
-              .parent()
-              .height($thisSticky.outerHeight());
-      });
-
-      $window.off("scroll.stickies").on("scroll.stickies", function() {
-      _whenScrolling();
-      });
-    }
-  };
-
-  var _whenScrolling = function() {
-
-    $stickies.each(function(i) {
-
-      var $thisSticky = $(this),
-          $stickyPosition = $thisSticky.data('originalPosition');
-
-      if ($stickyPosition <= $window.scrollTop()) {
-
-        var $nextSticky = $stickies.eq(i + 1),
-            $nextStickyPosition = $nextSticky.data('originalPosition') - $thisSticky.data('originalHeight');
-
-        $thisSticky.addClass("fixed");
-
-        if ($nextSticky.length > 0 && $thisSticky.offset().top >= $nextStickyPosition) {
-
-          $thisSticky.addClass("absolute").css("top", $nextStickyPosition);
-        }
-
-      } else {
-
-        var $prevSticky = $stickies.eq(i - 1);
-
-        $thisSticky.removeClass("fixed");
-
-        if ($prevSticky.length > 0 && $window.scrollTop() <= $thisSticky.data('originalPosition') - $thisSticky.data('originalHeight')) {
-
-          $prevSticky.removeClass("absolute").removeAttr("style");
-        }
-      }
-    });
-  };
-
-  return {
-    load: load
-  };
-})();
-
-$(function() {
-  stickyHeaders.load($(".followMeBar"));
-});
 }
