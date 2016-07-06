@@ -1,6 +1,5 @@
 Template.results.helpers({
   results: function() {
-    console.log('results');
     var pageId= parseInt(this.id);
     var today = new Date();
     var dd = today.getDate();
@@ -110,12 +109,10 @@ Template.results.events({
 })
 
 Template.results.rendered = function() {
-  console.log(this.data.id)
   Meteor.subscribe('results')
   setTimeout(function(){
     if (amountOfGames === 0){
       document.getElementById('nothingFound').className = '';
     }
   },500)
-  document.getElementById('loading').style.display = 'none';
 }

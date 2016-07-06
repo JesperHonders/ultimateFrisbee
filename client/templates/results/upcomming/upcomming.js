@@ -9,6 +9,7 @@ Template.upcomming.helpers({
     var hour = today.getHours();
     var minute = today.getMinutes();
     var games = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: hour}, "doc.team_1_score": 0, "doc.team_2_score": 0 }, {sort: {"meta.field": 1}}).fetch()
+    amountOfGames = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: hour}, "doc.team_1_score": 0, "doc.team_2_score": 0 }, {sort: {"meta.field": 1}}).count();
     var rounds = _.uniq(_.map(games, function(game){
       return game.meta.round_number
     }));
@@ -111,6 +112,10 @@ Template.upcomming.events({
 Template.upcomming.rendered = function() {
   console.log(this.data.id)
   Meteor.subscribe('results');
-
+  setTimeout(function(){
+    if (amountOfGames === 0){
+      document.getElementById('nothingFound').className = '';
+    }
+  },500)
   $('.round-heading').stickyNavbar();
 }

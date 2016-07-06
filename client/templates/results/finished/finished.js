@@ -9,6 +9,7 @@ Template.finished.helpers({
     var hour = today.getHours();
     var minute = today.getMinutes();
     var games = results.find({"meta.tournamentID": pageId, "meta.winner": {$ne:null}}, {sort: {"meta.field": 1}}).fetch();
+    amountOfGames = results.find({"meta.tournamentID": pageId, "meta.winner": {$ne:null}}, {sort: {"meta.field": 1}}).count();
     var rounds = _.uniq(_.map(games, function(game){
       return game.meta.round_number
     }));
@@ -106,6 +107,12 @@ Template.finished.rendered = function() {
   console.log(this.data.id)
   Meteor.subscribe('results');
 
+  setTimeout(function(){
+    if (amountOfGames === 0){
+      document.getElementById('nothingFound').className = '';
+    }
+  },500)
+
   var stickyHeaders = (function() {
 
   var $window = $(window),
@@ -118,29 +125,29 @@ Template.finished.rendered = function() {
       $stickies = stickies.each(function() {
 
         var $thisSticky = $(this).wrap('<div class="followWrap" />');
-  
+
         $thisSticky
             .data('originalPosition', $thisSticky.offset().top)
             .data('originalHeight', $thisSticky.outerHeight())
               .parent()
-              .height($thisSticky.outerHeight());         
+              .height($thisSticky.outerHeight());
       });
 
       $window.off("scroll.stickies").on("scroll.stickies", function() {
-      _whenScrolling();   
+      _whenScrolling();
       });
     }
   };
 
   var _whenScrolling = function() {
 
-    $stickies.each(function(i) {      
+    $stickies.each(function(i) {
 
       var $thisSticky = $(this),
           $stickyPosition = $thisSticky.data('originalPosition');
 
-      if ($stickyPosition <= $window.scrollTop()) {        
-        
+      if ($stickyPosition <= $window.scrollTop()) {
+
         var $nextSticky = $stickies.eq(i + 1),
             $nextStickyPosition = $nextSticky.data('originalPosition') - $thisSticky.data('originalHeight');
 
@@ -152,7 +159,7 @@ Template.finished.rendered = function() {
         }
 
       } else {
-        
+
         var $prevSticky = $stickies.eq(i - 1);
 
         $thisSticky.removeClass("fixed");
