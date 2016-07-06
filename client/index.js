@@ -4,7 +4,6 @@ var $window = $(window),
      $stickies;
 
  var load = function(stickies) {
-   console.log("loading");
    if (typeof stickies === "object" && stickies instanceof jQuery && stickies.length > 0) {
 
      $stickies = stickies.each(function() {

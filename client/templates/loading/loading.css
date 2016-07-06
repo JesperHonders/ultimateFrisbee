@@ -1,0 +1,16 @@
+.loading {
+  text-align: center;
+  margin-top: 2em;
+  font-size: 1.5em;
+  color: grey;
+}
+
+.fa-spinner{
+  animation: loadspinner 1s infinite;
+  transform-origin: 50%;
+}
+
+@keyframes loadspinner{
+  0% {transform: rotate(0deg)}
+  100% {transform: rotate(360deg)}
+}
