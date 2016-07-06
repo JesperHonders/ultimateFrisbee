@@ -99,13 +99,9 @@ Template.finished.events({
 })
 
 Template.finished.rendered = function() {
-  Meteor.subscribe('results');
-
-  setTimeout(function(){
-    if (amountOfGames === 0){
-      document.getElementById('nothingFound').className = '';
-    }
-  },500)
-
-
+  if (amountOfGames === 0){
+    document.getElementById('nothingFound').className = '';
+  }
+  console.log($('.round-heading'));
+   stickyHeaders.load($('.round-heading'));
 }

@@ -21,14 +21,26 @@ Template.baseLayout.events({
       // element is active
       el.className = '';
       document.getElementById('CanvasMenu').className = ''
-      document.getElementById('contentWrapper').className = ''
     } else {
       // element is not active
       el.className += 'active';
       document.getElementById('CanvasMenu').className = 'active'
       document.getElementById('CanvasMenu').style.transform = ''
-      document.getElementById('contentWrapper').className = 'active'
-      document.getElementById('contentWrapper').style.transform = ''
+    }
+  },
+  'click #sb-toggle-right' (event){
+    var el = toggleButton = document.getElementById('sb-toggle-left');
+    var cls = 'active';
+    var hasClass = el.className && new RegExp("(\\s|^)" + cls + "(\\s|$)").test(el.className);
+    if (hasClass) {
+      // element is active
+      el.className = '';
+      document.getElementById('CanvasMenu').className = ''
+    } else {
+      // element is not active
+      el.className += 'active';
+      document.getElementById('CanvasMenu').className = 'active'
+      document.getElementById('CanvasMenu').style.transform = ''
     }
   }
 })

@@ -57,7 +57,7 @@ ul.results {
 .round-heading {
 	width: 100%;
 	border-bottom: 1px solid #F0F0F0;
-	padding: 1em;
+	padding: 2em 1em 1em 1em;
 }
 
 .round-heading h2 {
@@ -239,5 +239,3 @@ select.color-picker:focus {
 	border: 1px solid grey;
 	color: grey;
 }
-
-

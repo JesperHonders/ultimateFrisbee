@@ -12,18 +12,30 @@ Router.map(function(){
   }),
   this.route('finished',{
     path: '/results/:id/finished',
+    waitOn: function(){
+    // waitOn makes sure that this publication is ready before rendering your template
+    return Meteor.subscribe("results");
+    },
     data: function(){
       return {id: this.params.id}
     }
   }),
   this.route('upcomming',{
     path: '/results/:id/upcomming',
+    waitOn: function(){
+    // waitOn makes sure that this publication is ready before rendering your template
+    return Meteor.subscribe("results");
+    },
     data: function(){
       return {id: this.params.id}
     }
   }),
   this.route('game',{
     path: '/game/:id/',
+    waitOn: function(){
+    // waitOn makes sure that this publication is ready before rendering your template
+    return Meteor.subscribe("results");
+    },
     data: function(){
       return this.params.id
     }

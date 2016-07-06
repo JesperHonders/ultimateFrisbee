@@ -23,6 +23,18 @@ body{
 	overflow-x: hidden;
 }
 
+.fixed{
+	position: fixed;
+	top: 0px;
+	background: white;
+	z-index: 9999999;
+	padding-top: 1em;
+}
+
+.absolute{
+	position: static;
+}
+
 #CanvasMenu {
 	position: absolute;
 	height:100vh;
@@ -36,18 +48,6 @@ body{
 	transform: translateX(0);
 	transition: all 0.5s;
 }
-
-#contentWrapper{
-	transform: translateX(0);
-	transition: all 0.5s;
-}
-
-#contentWrapper.active {
-	transform: translateX(320px);
-	transition: all 0.5s;
-}
-
-
 
 /* Navigation left */
 #CanvasMenu {
@@ -94,6 +94,20 @@ body{
 #sb-toggle-left:active, #sb-toggle-left:focus, #sb-toggle-left:visited {
 	color: #fff;
 }
+
+#sb-toggle-right {
+	font-size: 2em;
+	position: absolute;
+	top: 1em;
+	right: .5em;
+}
+
+#sb-toggle-right:active, #sb-toggle-right:focus, #sb-toggle-right:visited {
+	color: #fff;
+}
+
+
+
 
 /* Header */
 header {

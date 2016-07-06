@@ -106,10 +106,8 @@ Template.upcomming.events({
 
 Template.upcomming.rendered = function() {
   Meteor.subscribe('results');
-  setTimeout(function(){
-    if (amountOfGames === 0){
-      document.getElementById('nothingFound').className = '';
-    }
-  },500)
-  $('.round-heading').stickyNavbar();
+  if (amountOfGames === 0){
+    document.getElementById('nothingFound').className = '';
+  }
+  stickyHeaders.load($('.round-heading'));
 }
