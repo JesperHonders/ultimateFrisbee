@@ -1,4 +1,11 @@
 img.fieldplan {
-	width: 92%;
-	margin: 1em 3% 0 3%;
+	width: 93.33333%;
+	margin: 1em 3.33333% 0 3.33333%;
+}
+
+@media (min-width: 1300px) {
+	img.fieldplan {
+		width: 60%;
+		margin: 1em 20% 0 20%;
+	}
 }

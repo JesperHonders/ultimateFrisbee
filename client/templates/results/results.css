@@ -57,12 +57,13 @@ ul.results {
 .round-heading {
 	width: 100%;
 	border-bottom: 1px solid #F0F0F0;
-	padding: 2em 1em 1em 1em;
+	padding: 1em;
 }
 
 .round-heading h2 {
 	text-transform: uppercase;
 	font-weight: bold;
+	font-size: .8em;
 }
 
 /* --- HIDDEN ROW --- */
@@ -129,6 +130,10 @@ table {
 	z-index: 9999;
 }
 
+.hiddenRow .close-hidden-row:hover {
+	cursor: pointer;
+}
+
 /* Color picker */
 select.color-picker {
 	border: 1px solid #fff;
@@ -138,6 +143,10 @@ select.color-picker {
 
 select.color-picker:focus {
 	outline: none;
+}
+
+select.color-picker:hover {
+	cursor: pointer;
 }
 
 .team1 p span, .team2 p span {
@@ -167,8 +176,9 @@ select.color-picker:focus {
 }
 
 .submit-score:hover, .submit-score:visited, .submit-score:active, .submit-score:focus {
-	color: #fff;
+	color: grey;
 	text-decoration: none;
+	background: #fff;
 }
 
 .hiddenRow .submit-score i {
@@ -238,4 +248,60 @@ select.color-picker:focus {
 	background: #fff!important;
 	border: 1px solid grey;
 	color: grey;
+}
+
+/* Media Queries */
+@media (min-width: 600px) {
+	.team-name {
+		font-size: .8em;
+	}
+	.field, .hidden-field {
+		font-size: .7em;
+	}
+	.score-time, .hidden-time {
+		font-size: 1.2em;
+	}
+	.hiddenRow h2 {
+		font-size: 1em;
+	}
+	.meta-data {
+		top: 2em;
+	}
+	.submit-score {
+		bottom: 2em;
+	}
+	.icon-tshirt {
+		font-size: 1.5em;
+	}
+	.hiddenRow .close-hidden-row {
+		font-size: 2.5em;
+	}
+}
+
+@media (min-width: 900px) {
+	.team-name {
+		font-size: 1em;
+	}
+	.field, .hidden-fiel {
+		font-size: .8em;
+	}
+	.score-time, .hidden-time {
+		font-size: 1.5em;
+	}
+	.hiddenRow h2 {
+		font-size: 1.5em;
+	}
+	.meta-data {
+		top: 2.5em;
+	}
+	.hiddenRow .submit-score {
+		bottom: 2.5em;
+		font-size: 1em;
+	}
+	.icon-tshirt {
+		font-size: 2em;
+	}
+	.hiddenRow .close-hidden-row {
+		font-size: 3.5em;
+	}
 }

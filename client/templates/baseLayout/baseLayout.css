@@ -25,9 +25,10 @@ body{
 
 .fixed{
 	position: fixed;
-	top: 0px;
+/*	top: 121px;*/
+	top: 0;
 	background: white;
-	z-index: 9999999;
+	z-index: 99999;
 	padding-top: 1em;
 }
 
@@ -91,6 +92,10 @@ body{
 	left: .5em;
 }
 
+#sb-toggle-left:hover {
+	cursor: pointer;
+}
+
 #sb-toggle-left:active, #sb-toggle-left:focus, #sb-toggle-left:visited {
 	color: #fff;
 }
@@ -115,7 +120,15 @@ header {
 	color: white;
 	padding: 2.5em 0 0 0;
 	text-align: center;
+/*	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 99;*/
 }
+
+/*.header-sub-nav {
+	top: 81px;
+}*/
 
 header h1 {
 	padding-bottom: .5em;
@@ -130,6 +143,11 @@ header a {
 .sub-nav a {
 	padding-bottom: .5em;
 	text-decoration: none;
+}
+
+.sub-nav a:hover {
+	cursor: pointer;
+	color: #FAD03B;
 }
 
 .sub-nav a.active {
