@@ -61,7 +61,6 @@ Meteor.methods({
         email: emailVar,
         password: passwordVar
     });
-    console.log("added user");
   },
 
   updateResults: function(){

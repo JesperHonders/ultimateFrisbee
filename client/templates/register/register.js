@@ -6,6 +6,8 @@ Template.register.events({
 
         Meteor.call("createScoreKeeper", emailVar, passwordVar);
 
+        noty({ text: 'Account created', type: 'success' });
+
         event.target.registerEmail.value = '';
         event.target.registerPassword.value = '';
     }
