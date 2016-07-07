@@ -102,7 +102,6 @@ Template.results.events({
 
 Template.results.rendered = function() {
   Meteor.subscribe('results')
-  console.log(amountOfGames);
   if (amountOfGames === 0){
     document.getElementById('nothingFound').className = '';
   }

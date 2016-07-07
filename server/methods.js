@@ -66,8 +66,9 @@ Meteor.methods({
   finalizeScore: function(gameID){
     // sends the game to the api
     var game = results.findOne({"meta.gameID": gameID});
-    HTTP.post('https://api.leaguevine.com/v1/game_scores/', {headers: {'Content-Type': 'application/json','Accept': 'application/json','Authorization': 'bearer e800ef7f9c'},data: { "game_id": gameID,"team_1_score": game.doc.team_1_score,"team_2_score": game.doc.team_2_score,"is_final": "True"}
+    HTTP.post('https://api.leaguevine.com/v1/game_scores/', {headers: {'Content-Type': 'application/json','Accept': 'application/json','Authorization': 'bearer 7d1ed8932f'},data: { "game_id": gameID,"team_1_score": game.doc.team_1_score,"team_2_score": game.doc.team_2_score,"is_final": "True"}
     }, function( error, response ) {
+      console.log(error, response);
     });
   },
 
