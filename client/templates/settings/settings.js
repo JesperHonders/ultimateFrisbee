@@ -13,8 +13,6 @@ Template.settings.events({
     var id = parseInt(tourId);
     Meteor.call('addTournament', id, name )
     noty({text: 'Succesfully added tournament', type: 'success'})
-    $('#formTournamentName').val() = '';
-    $('#formTournamentId').val() = '';
     return false
   },
   'click .deleteButton' (event) {
