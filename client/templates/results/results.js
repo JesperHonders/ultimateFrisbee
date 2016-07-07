@@ -7,8 +7,8 @@ Template.results.helpers({
     var yyyy = today.getFullYear();
     var hour = today.getHours();
     var minute = today.getMinutes();
-    var games = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "meta.winner": null, "time.startHour": {$gte: hour, $lte: hour+1}}, {sort: {"meta.field": 1}}).fetch();
-    amountOfGames = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "meta.winner": null, "time.startHour": {$gte: hour, $lte: hour+1}}, {sort: {"meta.field": 1}}).count();
+    var games = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "meta.winner": null, "time.startHour": {$gte: hour, $lte: hour+2}}, {sort: {"meta.field": 1}}).fetch();
+    amountOfGames = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "meta.winner": null, "time.startHour": {$gte: hour, $lte: hour+2}}, {sort: {"meta.field": 1}}).count();
     var rounds = _.uniq(_.map(games, function(game){
       return game.meta.round_number
     }));
