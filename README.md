@@ -13,7 +13,7 @@
 
 ## About Windmill
 
-Windmill is the biggest Ultimate Firsbee tournament in the Neterlands. There are three different divisions: Open (male division), Mixed division and a Women division. The tournaments takes a full weekend late in spring. 
+Windmill is the biggest Ultimate Firsbee tournament in the Neterlands. There are three different divisions: Open (male division), Mixed division and a Women division. The tournaments takes a full weekend late in spring.
 
 [![Ultimate Frisbee](https://img.youtube.com/vi/HhUays2ehyI/0.jpg)](https://www.youtube.com/watch?v=HhUays2ehyI)
 
@@ -38,11 +38,11 @@ For this project we created an interactive app for the Windmill Tournament. This
 
 ### Installation
 
-To install the application you first need to install Meteor. Meteor is a cohesive development platform, a collection of libraries and packages that are bound together in a tidy way to make web development easier. 
+To install the application you first need to install Meteor. Meteor is a cohesive development platform, a collection of libraries and packages that are bound together in a tidy way to make web development easier.
 
 If you're a Windows user you can simply go to this link and download the file. Just simply follow the steps during installation, it's pretty  basic. If your a Mac or Linux user were going to play with the command line.
 
-Open your terminal and paste is the following:
+Open your terminal and paste in the following:
 ```
 	curl https://install.meteor.com/ | sh
 ```
@@ -66,11 +66,13 @@ Now the app will be active on your localhost. The terminal will tell you which p
 
 ## Minor courses implementation
 
-### Web App From Scratch 
+### Web App From Scratch
 
 * Connecting to the Windmill API and get and manipulate data from this API.
 * Templating
 * Routing
+* Use of Underscore js
+* Advanced server polling
 
 ### CSS To The Rescue
 
@@ -78,19 +80,261 @@ Now the app will be active on your localhost. The terminal will tell you which p
 * Flexbox
 * CSS prefixes to ensure the product works on all browsers.
 * The use of special selectors like selector[type="submit"].
+* Use of animations @keyframes
+* Use of translations (GPU boosted)
+* Several "Hacks" as described from the book css secrets ("Lea Verou")
 
 ### Real Time Web
 
-* De app is gemaakt met Meteor.
-* De scores zijn real-time.
-* Om de app te versnellen hebben we een eigen database die aan de achterkant data opvraagt en doorstuurt naar de API.
+* The app is made in Meteor
+* All the scores are real time
+* To fasten the app we used our own server to request all the changes from the api. so we don't have to deal with the slow server from leaguevine
+* Did research on iron:Router Routing, made changes that will improve the app on UX.
+* Smart usage of mongoDB
 
 ## Workflow
 
-We worked in on this application as a duo, Jesper (Lead programming) Bart (Lead Design/Css). Notice the lead there? 
-Thats because we worked together on both of those things, only Jesper had the final say about programming and Bart about design. 
+We worked in on this application as a duo, Jesper (Lead programming) Bart (Lead Design/Css). Notice the lead there?
+Thats because we worked together on both of those things, only Jesper had the final say about programming and Bart about design.
 
 Every day we had contact over skype and talked about the changes we made and tought were necessary, these changes were described on our Trello, and assigned to each member.
+
+## How does it work
+
+In the meteor methods file we have the following functions:
+
+**AddTournament.**
+
+AddTournament is used to add a tournament to the tournament collection. This collection is used to poll tournaments from the leaguevine API
+
+``` javascript
+addTournament: function(id, name){
+	// adds the tournament id in our local database, we use that for polling the server
+	tournaments.insert({tournamentID: id, name: name})
+	// Syncs the score with the database, if the tournament isn't in our own database its inserts the new scores.
+	Meteor.call("updateResults");
+},
+```
+
+**RemoveTournament.**
+
+Remove tournament is used to remove a tournament from the tournament collection. This collection is used to poll tournaments from the leaguevine API.
+
+``` javascript
+removeTournament: function(id){
+	// removes the tournament from the tournament database
+	tournaments.remove({_id: id})
+},
+```
+
+**editScoreField (1 & 2)**
+
+Edit score field is used to edit the score in the Results collection. with the use of scorerunning variable its possible to check if someone has requested the function multiple times in 1 second. If so only update 1 time.
+
+``` javascript
+editScoreField1: function(score, id){
+	// checks if someone else has pressed the button in 1 second
+	if (score1running) return;
+	// if not set that we pressed the button
+	score1running = true;
+	// update the results
+	results.update(
+		{_id: id},
+		{$set: {"doc.team_1_score": score}}
+	)
+	// after one second clear the pressed stage
+	setTimeout(function(){ score1running = false;}, 1000);
+},
+```
+
+**Endgame**
+
+The Endgame function is used to set a winner ("Not the actual winner that is set when the server polls for the most recent scores"). But this is used to remove the game from the live section.
+
+``` javascript
+endGame: function(id){
+	// sets the winner for now, this changes when the server polls, but needs a winner otherwise its still live.
+	results.update(
+		{_id: id},
+		{$set: {"meta.winner": "set"}}
+	)
+},
+```
+
+**Color shirt.**
+
+The color shirt function is used to add a color field to the results.doc collection. this is used to display the team color on the application.
+
+``` javascript
+colorShirt1: function(id, color){
+	// Updates the field shirt color, if it doesn't exists adds it
+	results.update(
+		{_id: id},
+		{$set: {"doc.team_1_color": color}}
+	)
+},
+```
+
+**finalizeScore.**
+
+Finalize Score is used to send the score to the leaguevine API. When used sends the final score of the game to the API. A winner will be set by the API
+
+``` javascript
+finalizeScore: function(gameID){
+	// sends the game to the api
+	var game = results.findOne({"meta.gameID": gameID});
+	HTTP.post('https://api.leaguevine.com/v1/game_scores/', {headers: {'Content-Type': 'application/json','Accept': 'application/json','Authorization': 'bearer 7d1ed8932f'},data: { "game_id": gameID,"team_1_score": game.doc.team_1_score,"team_2_score": game.doc.team_2_score,"is_final": "True"}
+	}, function( error, response ) {
+		console.log(error, response);
+	});
+},
+```
+
+**createScoreKeeper.**
+
+createScoreKeeper is used to create a user in the users collection of meteor. Without this function it isn't possible to add new score keepers of the back end of the app. (Settings page)
+
+``` javascript
+createScoreKeeper: function(emailVar, passwordVar){
+	// adds an account in the database
+	Accounts.createUser({
+			email: emailVar,
+			password: passwordVar
+	});
+},
+```
+
+**updateResults**
+
+UpdateResults gets all the data from the server regarding to everything that is in the tournaments collection. it checks how many rounds there are in the tournaments and will send async calls of all the routes. Inside these calls it will write all new changes or updates into the results collection.
+This code has several versions, and has gone trough sever iterations to make it faster.
+
+``` javascript
+	// wrapping the code in an interval
+	// Meteor.setInterval(function(){
+		// Fetching all the tournaments that the code has to itterate over.
+		var allTournaments = tournaments.find({}).fetch();
+		// Running the code for each tournament
+		_.each(allTournaments, function(tournament){
+			// this = current tournament
+			var self = this;
+			var i = 1;
+			// Firring first api call to get ammount of rounds in current tournament
+			HTTP.get('https://api.leaguevine.com/v1/swiss_rounds/?tournament_id='+tournament.tournamentID+'&fields=%5Bforced_byes%5D&limit=1&access_token=eb05d96dbe', function(error, response){
+				roundCount = response.data.meta.total_count;
+				// looping for each round
+				while(i<=roundCount){
+					// fires async http request that requests every round in the tournament
+					HTTP.get('https://api.leaguevine.com/v1/swiss_rounds/?tournament_id='+tournament.tournamentID+'&round_number='+i+'&access_token=6fe6daa931', function(error, response){
+						// Checks if round is empty
+						if(response.data.meta.total_count === 0){
+							return
+						}
+						else{
+								_.each(response.data.objects[0].games, function(item) {
+									// checks if game has an opponent otherwise don't write team 2
+									if(item.team_2 === null){
+										var doc = {
+											team_1_name: item.team_1.name,
+											team_1_score: item.team_1_score
+										};
+									}
+									// if game has opponent write both teams
+									else {
+										var doc = {
+											team_1_name: item.team_1.name,
+											team_1_score: item.team_1_score,
+											team_2_name: item.team_2.name,
+											team_2_score: item.team_2_score,
+										};
+									}
+									var meta = {
+										round_number: item.swiss_round.round_number,
+										gameID: item.id,
+										tournamentID: item.tournament_id,
+										winner: item.winner,
+										startTime: item.start_time,
+										field: item.game_site.name
+									}
+									var time = {
+										startDate: item.start_time.substring(0,10),
+										startHour: parseInt(item.start_time.substring(11,13)),
+										startMinute: parseInt(item.start_time.substring(14,16))
+									}
+									// if checks if the game allready exists
+									var exists = results.findOne({"meta.gameID": item.id})
+									// if it exists update instead of inserting
+									if (exists){
+										results.update(
+											{"meta.gameID": item.id},
+											{doc: doc, meta: meta, time: time}
+										)
+										// else insert the document in the local mongoDB
+									} else {
+										results.insert({doc, meta, time})
+									}
+							});
+						}
+					});
+					i++;
+				}
+			})
+		});
+	// }, 600000) // ammount of mili seconds the function runs again
+}
+```
+
+To in the results pages we have the following functions
+
+**Variable Declartions**
+
+These veriables we need to query inside the results collection. almost all these vars are made to get the current time.
+
+``` javascript
+var pageId= parseInt(this.id);
+var today = new Date();
+var dd = ('0' + (today.getDate())).slice(-2);
+var mm = ('0' + (today.getMonth()+1)).slice(-2) // January = +1 .slice(-2) checks if there are 2 numbers if not add a 0
+var yyyy = today.getFullYear();
+var hour = today.getHours();
+var minute = today.getMinutes();
+var games = results.find({"meta.tournamentID": pageId, "time.startDate": yyyy+"-"+mm+"-"+dd, "meta.winner": null, "time.startHour": {$gte: hour, $lte: hour+2}}, {sort: {"meta.field": 1}}).fetch();
+```
+
+**Getting unique round numbers**
+
+The following code is used to get the the amount of roundnumbers inside the tournament/mode.
+This code checks all the games and gets the round_numbers this will output an array of all the round numbers like [1,2,3,4,5,6,7,8]
+
+``` javascript
+var rounds = _.uniq(_.map(games, function(game){
+	return game.meta.round_number
+}));
+```
+
+**Rewriting Results object**
+
+In this code we rewrite the results objects to several objects as long as the unique numbers, within these objects are the games within these rounds.
+
+``` javascript
+var gamesByRound = _.map(rounds, function(round){
+	var roundGames = games.filter(function(game){
+		return game.meta.round_number === round
+	})
+	return {roundNumber: roundGames[0].meta.round_number, games: roundGames}
+})
+```
+**Sorting the games**
+
+In the next code we will sort the games by there round number so its easier to display them on the front-end side.
+
+``` javascript
+return _.sortBy(gamesByRound, function(round){
+	return round.roundNumber;
+}).reverse();
+},
+```
+
 
 ## Week 1
 
@@ -108,7 +352,7 @@ In the first week of the project we tried to poll data directly of the Leaguevin
 2. Api is slow (Takes about 30 seconds to get all the data)
 3. Request was blocking so the app stopped working when the api call was in progress
 
-the code we used: 
+the code we used:
 
 ```javascript
 import { Meteor } from 'meteor/meteor';
@@ -249,7 +493,7 @@ Still we had a problem with making the data realtime, as this would just poll th
 failed by time out. Basicly we were bombing the api with continious large requests. We had to solve this problem quick otherwise
 the app would be useless.
 
-And we didn't knew how much rounds there were inside 
+And we didn't knew how much rounds there were inside
 
 Then we decided to use filters to just get what we need from the api, this drasticly improved polling time. We filtered the api request for the round numbers on forced bytes, this made the api request almost instant.
 
@@ -277,9 +521,9 @@ var games = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: h
       return round.roundNumber;
     }).reverse();
     ```
-    
+
     in this week we also fixed the scorekeeping functionality, wich uses a http request wich works like the following:
-    
+
     ```javascript
     HTTP.post('https://api.leaguevine.com/v1/game_scores/', {headers: {'Content-Type': 'application/json','Accept': 'application/json','Authorization': 'bearer 4d7da879a1'},data: { "game_id": this.meta.gameID,"team_1_score": this.doc.team_1_score + 1,"team_2_score": this.doc.team_2_score,"is_final": "True"}
  +    }, function( error, response ) {
@@ -290,9 +534,9 @@ var games = results.find({"meta.tournamentID": pageId, "time.startHour": {$ne: h
  +      }
  +    });
 ```
-    
-also we changed the way how we display data: 
-    
+
+also we changed the way how we display data:
+
 ```html
     <template name="results">
   <ul class="results">
@@ -302,7 +546,7 @@ also we changed the way how we display data:
         <section class="round-heading">
           <h2>Round {{roundNumber}}</h2>
         </section>
-        
+
         {{#each games}}
           <li class="resultRow">
 
@@ -367,7 +611,7 @@ also we changed the way how we display data:
                       </div>
                   </div>
 
-                  
+
 
                 </div>
               </div>
@@ -387,7 +631,3 @@ The final week of the project. This week we added a few extras like shirt color 
 The shirt color is done by using an select html element that writes on change to our mobgodb. It adds an extra set of fields that hold hex color codes.
 
 The confirmations are done by a jquery plugin called noty. Using noty its really easy to notify the user about changes with the use of a small library.
-
-
-
-
