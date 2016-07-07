@@ -14,19 +14,24 @@
             <button id="formSubmit" class="button">Submit</button>
         </form>
 
+        <section>
+          <h1>Create a score keeper account</h1>
+          {{>register}}
+        </section>
+
         <h3>Active tournaments</h3>
 
-        <table class="active-tournaments"> 
-          <tbody> 
+        <table class="active-tournaments">
+          <tbody>
             {{#each tournaments}}
               <tr>
-                <td><p>{{name}}</p></td> 
-                <th class="active-delete"><a href="" class="deleteButton"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></th> 
+                <td><p>{{name}}</p></td>
+                <th class="active-delete"><a href="" class="deleteButton"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></th>
               </tr>
-            {{/each}} 
-          </tbody> 
+            {{/each}}
+          </tbody>
         </table>
-  
+
       </div>
     </div>
     {{else}}

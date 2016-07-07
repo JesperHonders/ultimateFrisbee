@@ -56,6 +56,14 @@ Meteor.methods({
     });
   },
 
+  createScoreKeeper: function(emailVar, passwordVar){
+    Accounts.createUser({
+        email: emailVar,
+        password: passwordVar
+    });
+    console.log("added user");
+  },
+
   updateResults: function(){
     // wrapping the code in an interval
     // Meteor.setInterval(function(){
