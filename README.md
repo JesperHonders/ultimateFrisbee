@@ -60,8 +60,26 @@ Hit the "Return" key and now typ it:
 
 Now the app will be active on your localhost. The terminal will tell you which port to use.
 
-[![Ultimate Frisbee](https://img.youtube.com/vi/HhUays2ehyI/0.jpg)](https://www.youtube.com/watch?v=HhUays2ehyI)
+## Minor courses implementation
 
+### Web App From Scratch 
+
+* Connecting to the Windmill API and get and manipulate data from this API.
+* Templating
+* Routing
+
+### CSS To The Rescue
+
+* Responsive design (mobile first)
+* Flexbox
+* CSS prefixes to ensure the product works on all browsers.
+* The use of special selectors like selector[type="submit"].
+
+### Real Time Web
+
+* De app is gemaakt met Meteor.
+* De scores zijn real-time.
+* Om de app te versnellen hebben we een eigen database die aan de achterkant data opvraagt en doorstuurt naar de API.
 
 ## Workflow
 
@@ -365,10 +383,6 @@ The final week of the project. This week we added a few extras like shirt color 
 The shirt color is done by using an select html element that writes on change to our mobgodb. It adds an extra set of fields that hold hex color codes.
 
 The confirmations are done by a jquery plugin called noty. Using noty its really easy to notify the user about changes with the use of a small library.
-
-#Installation
-
-To install this application you need meteor. Just clone and run meteor, then you are good to go.
 
 
 
