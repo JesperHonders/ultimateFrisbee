@@ -25,6 +25,8 @@ Template.finished.helpers({
   },
   templateGestures: {
     'tap .resultRowShow':function (event, templateInstance) {
+      $('.hiddenRow').hide();
+      $('.resultRowShow').show();
       $('[data-id="'+this._id+'"]').slideToggle();
       $('[data-id="'+this._id+'"]').closest("li").toggleClass("show");
     }
