@@ -1,8 +1,67 @@
 # UltimateFrisbee Windmill Application
 
-## Use Cases
-1. An app where people of Windmill can easily keep scores.
-2. With the app I can see the scores of every game and see on what field the games are being played.
+![The app in grayscale](public/img/windmill-logo.png)
+
+### Contributors
+
+* [Jesper Honders](https://github.com/JesperHonders)
+* [Bart Beemster](https://github.com/beemstb002)
+
+### Client
+
+* Christian Shaffner
+
+## About Windmill
+
+Windmill is the biggest Ultimate Firsbee tournament in the Neterlands. There are three different divisions: Open (male division), Mixed division and a Women division. The tournaments takes a full weekend late in spring. 
+
+[![Ultimate Frisbee](https://img.youtube.com/vi/HhUays2ehyI/0.jpg)](https://www.youtube.com/watch?v=HhUays2ehyI)
+
+## The Problem
+
+Windmill uses an app to keep scores. The problem with this app is that its not user friendly, its slow, not safe and works like shit. The idea of having an app to keep the scores of all matches and to show who is playing who now and next round and where is very appealing to the Windmill organization. That's why they want an app which does all the old app does, but better. The app also has to be user friendly and have a good UI.
+
+### Must have
+
+- [x] An interactive app which can be used by players and viewers to gain information about matches.
+- [x] A good and clear user interface.
+- [x] Teams can see where they have to play their next game.
+- [x] All matches can be view on the app with certain match details like the score.
+- [x] All viewers can add points to a match when a team scores.
+- [x] The score system is controlled and not anyone can submit a(n untrue) score.
+- [x] The app must have a view of the field plan.
+- [x] It would be fun to do something with the color of shirts.
+
+## The Solution
+
+For this project we created an interactive app for the Windmill Tournament. This app satisfies every need of the client and more. We added extra functionalities to ensure the product is really top notch and ready to use for the next Windmill season. The app can be viewed [here](http://37.139.2.107).
+
+### Installation
+
+To install the application you first need to install Meteor. Meteor is a cohesive development platform, a collection of libraries and packages that are bound together in a tidy way to make web development easier. 
+
+If you're a Windows user you can simply go to this link and download the file. Just simply follow the steps during installation, it's pretty  basic. If your a Mac or Linux user were going to play with the command line.
+
+Open your terminal and paste is the following:
+	curl https://install.meteor.com/ | sh
+
+This command will:
+1. Connect to "install.meteor.com".
+2. Download the latest version of Meteor.
+3. Install that version of Meteor.
+
+If the terminal asks for your password, just type it in and tap the "Return" key. Keep your terminal open.
+
+Once we've installed Meteor we can now download the app from this Github page. Just click the green "Clone or download" button in top of this page and then click "Download ZIP". Go back to your terminal and type in cd and drag the folder from your downloads folder to the terminal. It should look something like this:
+	cd /Applications/MAMP/htdocs/ultimateFrisbee
+
+Hit the "Return" key and now typ it:
+	meteor
+
+Now the app will be active on your localhost. The terminal will tell you which port to use.
+
+[![Ultimate Frisbee](https://img.youtube.com/vi/HhUays2ehyI/0.jpg)](https://www.youtube.com/watch?v=HhUays2ehyI)
+
 
 ## Workflow
 

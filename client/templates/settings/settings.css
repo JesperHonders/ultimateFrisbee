@@ -23,3 +23,16 @@ table.active-tournaments {
 .active-delete {
 	min-width: 66px;
 }
+
+.add-scorekeeper input[type="submit"] {
+	background: #ea5906;
+    color: #fff;
+    margin: .5em auto 0;
+    padding: .8em 1em;
+    font-size: 1em;
+    border-radius: 4px;
+    text-transform: uppercase;
+    border: 1px solid #ea5906;
+    width: auto;
+    display: block;
+}

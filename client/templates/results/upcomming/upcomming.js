@@ -21,7 +21,7 @@ Template.upcomming.helpers({
 
     return _.sortBy(gamesByRound, function(round){
       return round.roundNumber;
-    }).reverse();
+    });
   },
   templateGestures: {
     'tap .resultRowShow':function (event, templateInstance) {

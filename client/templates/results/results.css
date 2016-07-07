@@ -45,6 +45,10 @@ ul.results {
 	padding: 1em 0;
 }
 
+.resultRowShow:hover {
+	cursor: pointer;
+}
+
 .resultRow p {
 	display: inline-block;
 }
