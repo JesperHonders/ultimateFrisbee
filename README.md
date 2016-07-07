@@ -92,6 +92,10 @@ Now the app will be active on your localhost. The terminal will tell you which p
 * Did research on iron:Router Routing, made changes that will improve the app on UX.
 * Smart usage of mongoDB
 
+### Performance Matters
+
+* Uses a second server to function like a hatch that will give all the scores, so we don't have to use the API everytime we request the scores. This will increase the speed of the load time.
+
 ## Workflow
 
 We worked in on this application as a duo, Jesper (Lead programming) Bart (Lead Design/Css). Notice the lead there?
