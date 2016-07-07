@@ -43,7 +43,9 @@ To install the application you first need to install Meteor. Meteor is a cohesiv
 If you're a Windows user you can simply go to this link and download the file. Just simply follow the steps during installation, it's pretty  basic. If your a Mac or Linux user were going to play with the command line.
 
 Open your terminal and paste is the following:
+```
 	curl https://install.meteor.com/ | sh
+```
 
 This command will:
 1. Connect to "install.meteor.com".
@@ -56,7 +58,9 @@ Once we've installed Meteor we can now download the app from this Github page. J
 	cd /Applications/MAMP/htdocs/ultimateFrisbee
 
 Hit the "Return" key and now typ it:
+```
 	meteor
+```
 
 Now the app will be active on your localhost. The terminal will tell you which port to use.
 
