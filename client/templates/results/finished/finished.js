@@ -104,6 +104,5 @@ Template.finished.rendered = function() {
   if (amountOfGames === 0){
     document.getElementById('nothingFound').className = '';
   }
-  console.log($('.round-heading'));
    stickyHeaders.load($('.round-heading'));
 }

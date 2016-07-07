@@ -84,7 +84,16 @@
                       <i class="shirt-1 icon-tshirt"></i>
                       <h2>{{doc.team_1_name}}</h2>
 
-                      <p><button class="button btn-plus btn-plus-team1 team-1-score-plus" style="color: {{doc.team_1_color}}">+</button> <span>{{doc.team_1_score}}</span> <button class="button btn-secondary team-1-score-min">-</button></p>
+                      <p>
+                        {{#if currentUser}}
+                        <button class="button btn-plus btn-plus-team1 team-1-score-plus" style="color: {{doc.team_1_color}}">+</button>
+                        {{/if}}
+                        <span>{{doc.team_1_score}}</span>
+                        {{#if currentUser}}
+                        <button class="button btn-secondary team-1-score-min">-</button>
+                        {{/if}}
+                      </p>
+
                   </div>
 
                   <div class="team2 col-md-6 col-xs-6 text-center" style="background: {{doc.team_2_color}}">
@@ -113,13 +122,19 @@
                       <i class="shirt-2 icon-tshirt"></i>
                       <h2>{{doc.team_2_name}}</h2>
 
-                      <p class="text-center"><button class="button btn-plus btn-plus-team2 team-2-score-plus" style="color: {{doc.team_2_color}}">+</button> <span>{{doc.team_2_score}}</span> <button class="button btn-secondary team-2-score-min">-</button></p>
+                      <p class="text-center">
+                        {{#if currentUser}}
+                        <button class="button btn-plus btn-plus-team2 team-2-score-plus" style="color: {{doc.team_2_color}}">+</button>
+                        {{/if}}
+                        <span>{{doc.team_2_score}}</span>
+                        {{#if currentUser}}
+                        <button class="button btn-secondary team-2-score-min">-</button>
+                        {{/if}}
+                      </p>
                   </div>
-
                   {{#if currentUser}}
-                      <a href="#" class="button submit-score btn-tertiary"><i class="fa fa-check" aria-hidden="true"></i> Finalize score</a>
+                      <a href="#" class="button submit-score btn-tertiary"><i class="fa fa-check" aria-hidden="true"></i> Update score</a>
                   {{/if}}
-
               </div>
           </li>
         {{/each}}

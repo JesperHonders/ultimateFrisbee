@@ -3,32 +3,44 @@ score2running = false;
 
 Meteor.methods({
   addTournament: function(id, name){
+    // adds the tournament id in our local database, we use that for polling the server
     tournaments.insert({tournamentID: id, name: name})
+    // Syncs the score with the database, if the tournament isn't in our own database its inserts the new scores.
     Meteor.call("updateResults");
   },
   removeTournament: function(id){
+    // removes the tournament from the tournament database
     tournaments.remove({_id: id})
   },
   editScoreField1: function(score, id){
+    // checks if someone else has pressed the button in 1 second
     if (score1running) return;
+    // if not set that we pressed the button
     score1running = true;
+    // update the results
     results.update(
       {_id: id},
       {$set: {"doc.team_1_score": score}}
     )
+    // after one second clear the pressed stage
     setTimeout(function(){ score1running = false;}, 1000);
   },
   editScoreField2: function(score, id){
+    // checks if someone else has pressed the button in 1 second
     if (score2running) return;
+    // if not set that we pressed the button
     score2running = true;
+    // update the results
     results.update(
       {_id: id},
       {$set: {"doc.team_2_score": score}}
     )
+    // after one second clear the pressed stage
     setTimeout(function(){ score2running = false;}, 1000);
   },
 
   endGame: function(id){
+    // sets the winner for now, this changes when the server polls, but needs a winner otherwise its still live.
     results.update(
       {_id: id},
       {$set: {"meta.winner": "set"}}
@@ -36,6 +48,7 @@ Meteor.methods({
   },
 
   colorShirt1: function(id, color){
+    // Updates the field shirt color, if it doesn't exists adds it
     results.update(
       {_id: id},
       {$set: {"doc.team_1_color": color}}
@@ -43,6 +56,7 @@ Meteor.methods({
   },
 
   colorShirt2: function(id, color){
+      // Updates the field shirt color, if it doesn't exists adds it
     results.update(
       {_id: id},
       {$set: {"doc.team_2_color": color}}
@@ -50,6 +64,7 @@ Meteor.methods({
   },
 
   finalizeScore: function(gameID){
+    // sends the game to the api
     var game = results.findOne({"meta.gameID": gameID});
     HTTP.post('https://api.leaguevine.com/v1/game_scores/', {headers: {'Content-Type': 'application/json','Accept': 'application/json','Authorization': 'bearer e800ef7f9c'},data: { "game_id": gameID,"team_1_score": game.doc.team_1_score,"team_2_score": game.doc.team_2_score,"is_final": "True"}
     }, function( error, response ) {
@@ -57,6 +72,7 @@ Meteor.methods({
   },
 
   createScoreKeeper: function(emailVar, passwordVar){
+    // adds an account in the database
     Accounts.createUser({
         email: emailVar,
         password: passwordVar
