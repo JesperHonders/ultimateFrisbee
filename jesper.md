@@ -706,3 +706,18 @@ The final week of the project. This week we added a few extras like shirt color 
 The shirt color is done by using an select html element that writes on change to our mobgodb. It adds an extra set of fields that hold hex color codes.
 
 The confirmations are done by a jquery plugin called noty. Using noty its really easy to notify the user about changes with the use of a small library.
+
+##Week 6
+
+This week we revamped our idea of the app. During our meeting with Harm and Koop we got some idea's that would benefit the app. This week was mostly spent rethinking and sketching our new ideas
+
+##Week 7
+
+This week we totally went for it, we created several new features and revised those that needed a little attention.
+
+Also I fixed the event listener bug what was driving me crazy.
+
+We added feedback on pages who were empty
+Added a loader page for better feedback
+Account creation to let only the ScoreKeepers create accounts.
+Made the score only updatable every second so when people press the button on the same time the app doesn't register +10 score.
