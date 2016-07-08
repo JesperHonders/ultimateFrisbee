@@ -175,6 +175,7 @@ The use of Github was a gift from the great developing god. It worked really wel
 * UX fixes.
 * Improved the settings page.
 * Improved the account page.
+* Improved the navigation.
 
 
 ## How does it work
