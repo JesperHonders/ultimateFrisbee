@@ -72,6 +72,7 @@ Now the app will be active on your localhost. The terminal will tell you which p
 * Templating
 * Routing
 * Use of Underscore js
+* Use of other Micro libraries like HTTP
 * Advanced server polling
 
 ### CSS To The Rescue
@@ -87,14 +88,16 @@ Now the app will be active on your localhost. The terminal will tell you which p
 ### Real Time Web
 
 * The app is made in Meteor
-* All the scores are real time
+* All the scores are real time (As far as real time is possible -"Harm")
 * To fasten the app we used our own server to request all the changes from the api. so we don't have to deal with the slow server from leaguevine
 * Did research on iron:Router Routing, made changes that will improve the app on UX.
 * Smart usage of mongoDB
+* Use of pubsub
 
 ### Performance Matters
 
 * Uses a second server to function like a hatch that will give all the scores, so we don't have to use the API everytime we request the scores. This will increase the speed of the load time.
+* Drasticly improved server communication between our own and the API.
 
 ## Workflow
 
