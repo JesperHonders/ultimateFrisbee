@@ -103,6 +103,13 @@ Thats because we worked together on both of those things, only Jesper had the fi
 
 Every day we had contact over skype and talked about the changes we made and tought were necessary, these changes were described on our Trello, and assigned to each member.
 
+## Future feature wishlist
+
+* an team page where you can track the process of a individual team
+* Build in ranking in the results page, so you can see what the ranking is of a team.
+* Final score button based on game time.
+* Timer in live page, so you can see how long the game is running
+
 ## How does it work
 
 In the meteor methods file we have the following functions:
